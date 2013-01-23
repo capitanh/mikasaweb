@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering 
+  SYSTEM "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<!-- Add a line for each table in format:
+	<table name="TABLE" class="package.model.Class"/>
+	i.e:
+	<table name="ACTIVITIES" class="net.mikasa.myapp.model.Activity"/>
+	-->
+</hibernate-reverse-engineering>
