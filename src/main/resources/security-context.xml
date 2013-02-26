@@ -19,13 +19,16 @@
     </authentication-provider>
   </authentication-manager>
 	
-<!-- 	<authentication-manager erase-credentials="true">
+	<!-- Uncomment for Active Directory authentication -->
+	<!--
+	<authentication-manager erase-credentials="true">
 		<authentication-provider ref="ldapActiveDirectoryAuthProvider"/>
 	</authentication-manager>
 	<beans:bean id="ldapActiveDirectoryAuthProvider" class="org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider">
 		<beans:constructor-arg value="oficinas.sepg.minhac.age" />
 		<beans:constructor-arg value="ldap://pereda810.sepg.minhac.age/" />
 		<beans:property name="convertSubErrorCodesToExceptions" value="true"/>
-	</beans:bean> -->
+	</beans:bean>
+	-->
 
 </beans:beans>
