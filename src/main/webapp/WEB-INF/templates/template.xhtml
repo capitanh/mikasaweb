@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-	<title>mikasa.net 2.0 beta</title>
-	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="resources/css/application.css"/>
-</h:head>
-<h:body>
-	
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>mikasa.net 2.0 beta</title>
+		<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css" />
+	</h:head>
+	<h:body>
+
 	<!-- Top navbar -->
 	<div id="topbar">
 		<div class="container-fluid">
+			<a href="javascript:;" id="menu-trigger" class="dropdown-toggle" data-toggle="dropdown" data-target="#"> <i class="icon-cog"></i></a>
 			<div id="top-nav">
 				<ul>
 					<li><a href="./pages/settings.html"> mikasa.net 2.0 beta</a></li>
@@ -27,10 +27,13 @@
 			</div>
 		</div>
 	</div>
-	
 	<div class="container-fluid">
-		<br/>
-		<div class="row-fluid">
+	<div class="row-fluid">
+	
+	<!-- Center area -->
+	<ui:insert name="center">		
+		<!-- Left Menu -->
+		<ui:insert name="menu">
 			<div class="span2 well">
 				<ul class="nav nav-list">
   				<li class="nav-header">Main Menu</li>
@@ -41,24 +44,19 @@
   				<li><a href="#">Manage</a></li>
 				</ul>			
 			</div>
-
-			<!-- Main center content -->
-			<ui:insert name="content">
-				<div class="span10 well">
-					<div class="alert alert-success">mikasa.net 2.0 beta. Welcome
-					</div>
-					<h:form>
-						<h:panelGrid>
-							<h:inputText id="iText" value="Type something..." />
-							<h:commandButton value="Send">
-								<f:ajax event="click" execute="iText" render="oText" />
-							</h:commandButton>
-							<h:outputText id="oText" value="#{iText.value}" />
-						</h:panelGrid>
-					</h:form>
-				</div>
-			</ui:insert>
-		</div>
-</div>
-</h:body>
+		</ui:insert>
+		<!-- Main -->
+		<ui:insert name="main">
+			<div class="span9">
+			</div>
+		</ui:insert>	
+	</ui:insert>
+		
+	<!-- Footer -->
+	<ui:insert name="footer">
+	</ui:insert>
+	
+	</div>
+	</div>
+	</h:body>
 </html>
