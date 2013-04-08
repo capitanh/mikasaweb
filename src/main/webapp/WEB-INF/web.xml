@@ -29,6 +29,8 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			classpath:applicationContext.xml
+			classpath:net/sf/appinfo/appInfoDefaultContext.xml
+			classpath:net/sf/appinfo/appInfoWebContext.xml	
 		</param-value>
 	</context-param>
 	<listener>

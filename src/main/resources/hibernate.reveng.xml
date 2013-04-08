@@ -3,9 +3,5 @@
   SYSTEM "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-	<!-- Add a line for each table in format:
-	<table name="TABLE" class="package.model.Class"/>
-	i.e:
-	<table name="ACTIVITIES" class="net.mikasa.myapp.model.Activity"/>
-	-->
+	<table name="users" class="net.mikasa.mikasaweb.model.User"/>	
 </hibernate-reverse-engineering>

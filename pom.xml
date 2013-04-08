@@ -82,46 +82,18 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>hibernate3-maven-plugin</artifactId>
-				<version>2.2</version>
-				<executions>
-					<execution>
-						<id>hbm2doc</id>
-						<phase>site</phase>
-						<goals>
-							<goal>hbm2doc</goal>
-						</goals>
-					</execution>
-        </executions>
+				<version>3.0</version>
 				<configuration>
-					<components>
-						<component>
-							<name>hbm2java</name>
-							<outputDirectory>src/main/java</outputDirectory>
-							<implementation>jdbcconfiguration</implementation>
-						</component>
-						<component>
-							<name>hbm2doc</name>
-							<outputDirectory>target/site/ddbb</outputDirectory>
-							<implementation>jdbcconfiguration</implementation>
-						</component>
-					</components>
-					<componentProperties>
-						<packagename>${project.groupId}.${project.artifactId}.model</packagename>
-						<jdk5>true</jdk5>
-						<ejb3>true</ejb3>
-						<revengfile>src/main/resources/hibernate.reveng.xml</revengfile>
-					</componentProperties>
+					<hibernatetool>
+						<jdbcconfiguration packagename="net.mikasa.mikasaweb.model"/>
+						<hbm2dao jdk5="true" ejb3="true"/>
+					</hibernatetool>
 				</configuration>
 				<dependencies>
 					<dependency>
 						<groupId>${jdbc.groupId}</groupId>
 						<artifactId>${jdbc.artifactId}</artifactId>
 						<version>${jdbc.version}</version>
-					</dependency>
-					<dependency>
-						<groupId>cglib</groupId>
-						<artifactId>cglib-nodep</artifactId>
-						<version>${cglib.version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>
