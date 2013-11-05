@@ -12,12 +12,16 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- Frameworks versions -->
-		<spring.version>3.1.0.RELEASE</spring.version>
+		<spring.version>3.2.4.RELEASE</spring.version>
 		<hibernate.version>4.0.0.Final</hibernate.version>
-		<cglib.version>2.2.2</cglib.version>
-		<slf4j.version>1.5.10</slf4j.version>
-		<junit.version>4.8.2</junit.version>
 	</properties>
+	
+	<!-- =================== Source code management =================== -->
+	<scm>
+		<connection>scm:git:https://github.com/capitanh/mikasaweb</connection>
+		<developerConnection>scm:git:https://github.com/capitanh/mikasaweb.git</developerConnection>
+		<url>https://github.com/capitanh/mikasaweb</url>		
+	</scm>	
 
 	<!-- =================== Build config	===================	-->
 	<build>
@@ -29,6 +33,7 @@
       </extension>
     </extensions>
 		<plugins>
+			<!-- Compiler -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
@@ -37,12 +42,28 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+			<!-- Build Number -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+				<version>1.2</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>create</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>			
 			<!-- Eclipse project generation -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
 				<version>2.9</version>
 				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
 					<jeeversion>5.0</jeeversion>
 					<wtpversion>2.0</wtpversion>
 					<additionalProjectFacets>
@@ -63,15 +84,18 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.3</version>
+				<version>2.4</version>
 				<configuration>
 					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
 						<manifestEntries>
-							<Specification-Title>${project.name}</Specification-Title>
-							<Specification-Version>${project.version}</Specification-Version>
-							<Build-Number>${BUILD_NUMBER}</Build-Number>
-							<Build-Date>${BUILD_ID}</Build-Date>
-							<SCM-Revision>${SVN_REVISION}</SCM-Revision>
+							<build-number>${buildNumber}</build-number>
+							<scm-branch>${scmBranch}</scm-branch>
+							<scm-revision>${SVN_REVISION}</scm-revision>
 							<Job-Name>${JOB_NAME}</Job-Name>
 						</manifestEntries>
 					</archive>
@@ -82,18 +106,47 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>hibernate3-maven-plugin</artifactId>
-				<version>3.0</version>
+				<version>2.2</version>
+				<executions> 
+					<execution> 
+						<id>hbm2doc</id> 
+						<phase>site</phase> 
+						<goals> 
+							<goal>hbm2doc</goal> 
+						</goals> 
+					</execution> 
+        </executions>				
 				<configuration>
-					<hibernatetool>
-						<jdbcconfiguration packagename="net.mikasa.mikasaweb.model"/>
-						<hbm2dao jdk5="true" ejb3="true"/>
-					</hibernatetool>
+					<components>
+						<component>
+							<name>hbm2java</name>
+							<outputDirectory>src/main/java</outputDirectory>
+							<implementation>jdbcconfiguration</implementation>
+						</component>
+						<component>
+							<name>hbm2doc</name>
+							<outputDirectory>target/site/ddbb</outputDirectory>
+							<implementation>jdbcconfiguration</implementation>
+						</component>						
+					</components>
+					<componentProperties>
+						<packagename>net.mikasa.mikasaweb.model</packagename>
+						<jdk5>true</jdk5>
+						<ejb3>true</ejb3>
+						<revengfile>${project.basedir}/src/test/resources/hibernate.reveng.xml</revengfile>
+						<propertyfile>${project.basedir}/src/test/resources/database.properties</propertyfile>
+					</componentProperties>
 				</configuration>
 				<dependencies>
 					<dependency>
-						<groupId>${jdbc.groupId}</groupId>
-						<artifactId>${jdbc.artifactId}</artifactId>
-						<version>${jdbc.version}</version>
+						<groupId>com.oracle</groupId>
+						<artifactId>ojdbc6</artifactId>
+						<version>11.1.0.7.0</version>
+					</dependency>
+					<dependency>
+						<groupId>cglib</groupId>
+						<artifactId>cglib-nodep</artifactId>
+						<version>2.2.2</version>
 					</dependency>
 				</dependencies>
 			</plugin>
@@ -101,19 +154,25 @@
   </build>
 
 	<dependencies>
-		<!-- General -->
+		<!-- Tests -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
+			<version>4.8.2</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>2.24.1</version>
-			<scope>test</scope>		
-    </dependency>				
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>			
+		</dependency>
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
@@ -121,42 +180,22 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-			<version>${slf4j.version}</version>
-			<scope>runtime</scope>
-		</dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.1.0.7.0</version>
+			<scope>test</scope>
+		</dependency>		
+		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>${slf4j.version}</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.16</version>
-		</dependency>
-		<dependency>
-			<groupId>${jdbc.groupId}</groupId>
-			<artifactId>${jdbc.artifactId}</artifactId>
-			<version>${jdbc.version}</version>
+			<version>1.7.2</version>
 		</dependency>
 		<dependency>
 			<groupId>net.sf.appinfo</groupId>
 			<artifactId>appinfo</artifactId>
 			<version>0.5.2</version>
     </dependency>
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>1.0.0.GA</version>
-		</dependency>
 		<!-- JSF -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -178,11 +217,6 @@
 			<artifactId>jsf-facelets</artifactId>
 			<version>1.1.14</version>
 		</dependency>		
-		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib</artifactId>
-			<version>${cglib.version}</version>
-		</dependency>
 		<!-- Spring Framework -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -196,44 +230,49 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
+			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
-		</dependency>
+		</dependency>		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-jpa</artifactId>
-			<version>1.0.2.RELEASE</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
+			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
+		</dependency>		
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>1.4.2.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>${spring.version}</version>
+			<version>3.1.4.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>${spring.version}</version>
+			<version>3.1.4.RELEASE</version>
 		</dependency>
-		<!-- Hibernate -->
+		<!-- Hibernate JPA-->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
+			<version>4.0.0.Final</version>
+		</dependency>		
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${hibernate.version}</version>
+			<version>4.0.0.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -245,9 +284,21 @@
 	<!-- Profiles -->
 	<profiles>
 		<profile>
+			<id>hsqldb</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<jdbc.groupId>org.hsqldb</jdbc.groupId>
+				<jdbc.artifactId>hsqldb</jdbc.artifactId>
+				<jdbc.version>2.3.1</jdbc.version>
+				<hibernate.dialect>org.hibernate.dialect.HSQLDialect</hibernate.dialect>
+			</properties>
+		</profile>	
+		<profile>
 			<id>mysql</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
 				<jdbc.groupId>mysql</jdbc.groupId>

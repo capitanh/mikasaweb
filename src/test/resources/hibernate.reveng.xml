@@ -3,5 +3,6 @@
   SYSTEM "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-	<table name="users" class="net.mikasa.mikasaweb.model.User"/>	
+	<table name="USERS" class="net.mikasa.mikasaweb.model.User"/>	
+	<table name="AUTHORITIES" class="net.mikasa.mikasaweb.model.Authority"/>
 </hibernate-reverse-engineering>
