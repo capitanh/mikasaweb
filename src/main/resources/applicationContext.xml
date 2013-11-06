@@ -39,7 +39,7 @@
 	<import resource="security-context.xml" />		
   
   <!-- Spring MVC -->
-	<mvc:resources mapping="resources/**" location="resources/" />
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<mvc:annotation-driven/>
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
