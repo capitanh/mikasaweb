@@ -1,5 +1,5 @@
-drop user TCMS cascade;
-create user TCMS identified by TCMS;
-grant all privileges to TCMS;
+drop user mikasadb cascade;
+create user mikasadb identified by mikasadb;
+grant all privileges to mikasadb;
 commit;
 exit;

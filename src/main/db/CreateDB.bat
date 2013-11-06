@@ -1,3 +1,3 @@
 exit|sqlplus system/saupw @Init.sql
-exit|sqlplus tcms/tcms @Schema.sql
-exit|sqlplus tcms/tcms @MasterData.sql
+exit|sqlplus mikasadb/mikasadb @Schema.sql
+exit|sqlplus mikasadb/mikasadb @MasterData.sql

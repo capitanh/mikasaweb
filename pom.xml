@@ -4,7 +4,7 @@
   <groupId>net.mikasa</groupId>
   <artifactId>mikasaweb</artifactId>
   <packaging>war</packaging>
-  <version>1.1</version>
+  <version>1.2</version>
   <name>mikasa.net Maven Webapp Archetype</name>
   <url>http://maven.apache.org</url>
 
@@ -19,7 +19,7 @@
 	<!-- =================== Source code management =================== -->
 	<scm>
 		<connection>scm:git:https://github.com/capitanh/mikasaweb</connection>
-		<developerConnection>scm:git:https://github.com/capitanh/mikasaweb.git</developerConnection>
+		<developerConnection>scm:git:https://github.com/capitanh/mikasaweb</developerConnection>
 		<url>https://github.com/capitanh/mikasaweb</url>		
 	</scm>	
 
