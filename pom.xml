@@ -71,12 +71,12 @@
 					</additionalProjectFacets>
 				</configuration>
 			</plugin>
-			<!-- maven jetty plugin-->
+			<!-- Jetty plugin-->
 			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>maven-jetty-plugin</artifactId>
-				<version>6.1.25</version>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
 				<configuration>
+					<jettyXml>jetty.xml</jettyXml>
 					<scanIntervalSeconds>3</scanIntervalSeconds>
 				</configuration>
 			</plugin>
@@ -184,7 +184,7 @@
 			<artifactId>ojdbc6</artifactId>
 			<version>11.1.0.7.0</version>
 			<scope>test</scope>
-		</dependency>		
+		</dependency>
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -246,6 +246,11 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>		
 		<dependency>
