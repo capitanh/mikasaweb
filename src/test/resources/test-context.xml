@@ -20,6 +20,7 @@
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	<jpa:repositories base-package="net.mikasa.mikasaweb.dao"/>
 	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+	<jdbc:embedded-database id="dataSource" type="H2"/>
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="jpaVendorAdapter">
@@ -31,12 +32,24 @@
 			<list>
 				<value>net.mikasa.mikasaweb.model</value>
 			</list>
+		</property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+			</props>
 		</property>		
+	</bean>
+	<!-- DBUnit stuff -->
+	<bean id="h2DataTypeFactory" class="org.dbunit.ext.h2.H2DataTypeFactory"/>
+	<bean id="dbUnitDatabaseConnection" class="com.github.springtestdbunit.bean.DatabaseDataSourceConnectionFactoryBean">
+		<property name="databaseConfig" ref="dbUnitDatabaseConfig"/>
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<bean id="dbUnitDatabaseConfig" class="com.github.springtestdbunit.bean.DatabaseConfigBean">
+		<property name="datatypeFactory" ref="h2DataTypeFactory" />
 	</bean>	
-	<jdbc:embedded-database id="dataSource">
-		<jdbc:script location="file:src/main/db/Schema.sql"/>
-		<jdbc:script location="file:src/main/db/MasterData.sql"/>
-	</jdbc:embedded-database>	
+	
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
 	<bean class="org.springframework.orm.hibernate4.HibernateExceptionTranslator"/>
 
