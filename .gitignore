@@ -5,5 +5,5 @@
 /gradle
 gradlew
 /.gradle
-
+/build
 /bin
