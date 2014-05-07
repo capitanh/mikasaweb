@@ -1,23 +1,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>net.mikasa</groupId>
-  <artifactId>mikasa-archetype-webapp</artifactId>
-  <packaging>war</packaging>
-  <version>1.2</version>
-  <name>mikasa.net Maven Webapp Archetype</name>
-  <url>http://maven.apache.org</url>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>net.mikasa</groupId>
+	<artifactId>mikasa-archetype-webapp</artifactId>
+	<packaging>war</packaging>
+	<version>1.2</version>
+	<name>mikasa.net Maven Webapp Archetype</name>
+	<url>http://maven.apache.org</url>
 
-  <!-- =================== Project Properties =================== -->
+	<!-- =================== Project Properties =================== -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- Frameworks versions -->
 		<spring.version>3.2.4.RELEASE</spring.version>
 		<hibernate.version>4.0.0.Final</hibernate.version>
 		<jsf.version>2.2.4</jsf.version>
-		<slf4j-version>1.7.5</slf4j-version>		
+		<slf4j-version>1.7.5</slf4j-version>
+		<jetty.version>9.1.5.v20140505</jetty.version>
 	</properties>
-	
+
 	<!-- =================== Source code management =================== -->
 	<scm>
 		<connection>scm:git:https://github.com/capitanh/mikasaweb</connection>
@@ -28,12 +29,12 @@
 	<!-- =================== Build config	===================	-->
 	<build>
 		<extensions>
-      <extension>
-        <groupId>org.apache.maven.archetype</groupId>
-        <artifactId>archetype-packaging</artifactId>
-        <version>2.2</version>
-      </extension>
-    </extensions>
+			<extension>
+				<groupId>org.apache.maven.archetype</groupId>
+				<artifactId>archetype-packaging</artifactId>
+				<version>2.2</version>
+			</extension>
+		</extensions>
 		<plugins>
 			<!-- Compiler -->
 			<plugin>
@@ -77,10 +78,24 @@
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty.version}</version>
 				<configuration>
-					<jettyXml>jetty.xml</jettyXml>
+					<jettyXml>src/main/resources/jetty.xml</jettyXml>
+					<jettyEnvXml>src/main/resources/jetty.xml</jettyEnvXml>
 					<scanIntervalSeconds>3</scanIntervalSeconds>
 				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.eclipse.jetty</groupId>
+						<artifactId>jetty-webapp</artifactId>
+						<version>${jetty.version}</version>					
+					</dependency>
+					<dependency>
+						<groupId>${jdbc.groupId}</groupId>
+						<artifactId>${jdbc.artifactId}</artifactId>
+						<version>${jdbc.version}</version>
+					</dependency>					
+				</dependencies>
 			</plugin>
 			<!-- Manifest config for AppInfo-->
 			<plugin>
@@ -117,7 +132,7 @@
 							<goal>hbm2doc</goal> 
 						</goals> 
 					</execution> 
-        </executions>				
+				</executions>				
 				<configuration>
 					<components>
 						<component>
@@ -153,7 +168,7 @@
 				</dependencies>
 			</plugin>
 		</plugins>
-  </build>
+	</build>
 
 	<dependencies>
 		<!-- Tests -->
@@ -199,14 +214,6 @@
 			<version>2.2.8</version>
 			<scope>test</scope>
 		</dependency>
-		<!--
-		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>11.1.0.7.0</version>
-			<scope>test</scope>
-		</dependency>
-		-->
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -222,7 +229,15 @@
 			<groupId>net.sf.appinfo</groupId>
 			<artifactId>appinfo</artifactId>
 			<version>0.5.2</version>
-    </dependency>
+		</dependency>
+		<!-- General -->
+		<!--
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc</artifactId>
+			<version>10.2.0.1.0</version>
+		</dependency>
+		-->
 		<!-- JSF -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -298,9 +313,9 @@
 			<version>3.1.4.RELEASE</version>
 		</dependency>
 		<dependency>
-    	<groupId>org.springframework.security</groupId>
-    	<artifactId>spring-security-ldap</artifactId>
-    	<version>3.1.4.RELEASE</version>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-ldap</artifactId>
+			<version>3.1.4.RELEASE</version>
 		</dependency>		
 		<!-- 
 		<dependency>
@@ -356,12 +371,12 @@
 		<profile>
 			<id>oracle</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
 				<jdbc.groupId>com.oracle</jdbc.groupId>
-				<jdbc.artifactId>ojdbc6</jdbc.artifactId>
-				<jdbc.version>11.1.0.7.0</jdbc.version>
+				<jdbc.artifactId>ojdbc</jdbc.artifactId>
+				<jdbc.version>10.2.0.1.0</jdbc.version>
 				<hibernate.dialect>org.hibernate.dialect.Oracle10gDialect</hibernate.dialect>
 			</properties>
 		</profile>
