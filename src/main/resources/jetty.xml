@@ -2,20 +2,10 @@
 	<New id="mikasadb" class="org.eclipse.jetty.plus.jndi.Resource">
 		<Arg>jdbc/mikasadb</Arg>
 		<Arg>
-			<New class="oracle.jdbc.pool.OracleDataSource">
-				<Set name="DriverType">thin</Set>
-				<Set name="URL">jdbc:oracle:thin:@localhost:1521:XE</Set>
+			<New class="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource">
+				<Set name="URL">jdbc:mysql://localhost:3306/mikasadb</Set>
 				<Set name="User">mikasadb</Set>
 				<Set name="Password">mikasadb</Set>
-				<Set name="connectionCachingEnabled">true</Set>
-				<Set name="connectionCacheProperties">
-					<New class="java.util.Properties">
-						<Call name="setProperty">
-							<Arg>MinLimit</Arg>
-							<Arg>5</Arg>
-						</Call>
-					</New>
-				</Set>
 			</New>		
 		</Arg>
 	</New>

@@ -231,13 +231,11 @@
 			<version>0.5.2</version>
 		</dependency>
 		<!-- General -->
-		<!--
 		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc</artifactId>
-			<version>10.2.0.1.0</version>
+			<groupId>${jdbc.groupId}</groupId>
+			<artifactId>${jdbc.artifactId}</artifactId>
+			<version>${jdbc.version}</version>
 		</dependency>
-		-->
 		<!-- JSF -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -359,7 +357,7 @@
 		<profile>
 			<id>mysql</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
 				<jdbc.groupId>mysql</jdbc.groupId>
@@ -371,7 +369,7 @@
 		<profile>
 			<id>oracle</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
 				<jdbc.groupId>com.oracle</jdbc.groupId>
