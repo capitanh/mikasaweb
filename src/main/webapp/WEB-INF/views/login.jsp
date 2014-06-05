@@ -1,15 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
-	<h:head>
+<html>
+	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<title>mikasa.net - Login page</title>
 		<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css" />
-	</h:head>
-	<h:body> 
+	</head>
+	<body> 
 		<div class="container-fluid">
 			<div class="row-fluid"><div class="span12"/></div>
 			<div class="row-fluid"><div class="span12"/></div>
@@ -39,24 +35,15 @@
 							</div>
 							<div class="control-group">
 								<div class="controls">
-									<h:commandButton type="submit" class="btn" value="Login">
-										<!-- 
-										<f:ajax render="loginError" />
-										-->
-									</h:commandButton>
+									<input type="submit" class="btn" value="Login"/>
 								</div>
 							</div>
 						</form>
 					</div>
-					<!-- 
-					<div class="alert alert-error">
-						<h:outputText id="loginError" value="Login error"/>
-					</div>
-					-->
 				</div>
 				<div class="span3"/>
 			</div>
 		</div>
-	</h:body>
+	</body>
 </html>
 

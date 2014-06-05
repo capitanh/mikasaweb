@@ -5,10 +5,10 @@
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
 	<http auto-config="true">
-		<intercept-url pattern="/login.xhtml" access="IS_AUTHENTICATED_ANONYMOUSLY"/>		
+		<intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY"/>		
 		<intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
 		<intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY" />
-		<form-login login-page="/login.xhtml" default-target-url="/index.xhtml" always-use-default-target="true"/>
+		<form-login login-page="/login" default-target-url="/index" always-use-default-target="true"/>
   </http>
 	
 	<authentication-manager>
