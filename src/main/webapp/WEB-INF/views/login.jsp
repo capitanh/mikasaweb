@@ -1,49 +1,54 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
+<html lang="eng">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		
 		<title>mikasa.net - Login page</title>
-		<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css" />
+
+		<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css" />
 	</head>
+	
 	<body> 
-		<div class="container-fluid">
-			<div class="row-fluid"><div class="span12"/></div>
-			<div class="row-fluid"><div class="span12"/></div>
-			<div class="row-fluid"><div class="span12"/></div>
-			<div class="row-fluid"><div class="span12"/></div>
-			<div class="row-fluid"><div class="span12"/></div>
-			<div class="row-fluid"><div class="span12"/></div>
-			<div class="row-fluid"><div class="span12"/></div>
-			<div class="row-fluid"><div class="span12"/></div>			
-			<div class="row-fluid">
-				<div class="span3"/>
-				<div class="span6">
-					<div class="well">
-						<form action="j_spring_security_check" method="POST" class="form-horizontal">
-							<legend>mikasa.net Login Page</legend>
-							<div class="control-group">
-								<label class="control-label" for="j_username">User</label>
-								<div class="controls">
-									<input type="text" id="j_username" name="j_username" placeholder="User Name"/>
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="j_password">Password</label>
-								<div class="controls">
-									<input type="password" id="j_password" name="j_password" placeholder="Password"/>
-								</div>
-							</div>
-							<div class="control-group">
-								<div class="controls">
-									<input type="submit" class="btn" value="Login"/>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-				<div class="span3"/>
+		<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+			<div class="container">
+				<p class="navbar-text">mikasa.net 3.0 beta</p>
 			</div>
+		</nav>
+
+	<div class="container-fluid">
+			
+
+
+		<div class="row">
+			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<div class="well">
+					<form role="form" action="j_spring_security_check" method="POST">
+						<legend>Login Form</legend>
+						<div class="form-group">
+							<label for="j_username">User</label>
+							<input type="text" id="j_username" name="j_username" class="form-control" placeholder="User Name"/>
+						</div>
+						<div class="form-group">
+							<label for="j_password">Password</label>
+							<input type="password" id="j_password" name="j_password" class="form-control" placeholder="Password"/>
+						</div>
+						<button type="submit" class="btn btn-primary">Login</button>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-3"></div>
 		</div>
+		
+
+		</div>
+		<%--
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="resources/js/bootstrap.min.js"></script>		
+    --%>
 	</body>
 </html>
 

@@ -5,7 +5,6 @@
 <tiles-definitions>
 	<definition name="defaultTemplate" template="/WEB-INF/templates/template.jsp">
 		<put-attribute name="header" value="/WEB-INF/templates/header.jsp" />
-		<put-attribute name="menu" value="/WEB-INF/templates/menu.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/templates/footer.jsp" />
 	</definition>
 </tiles-definitions>

@@ -2,18 +2,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />	
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="resources/css/application.css" />
+
 	<title>mikasa.net 3.0 beta</title>
 
-	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="resources/css/application.css"/>
+	<!-- Bootstrap core CSS -->
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap theme -->
+	<link href="resources/css/bootstrap-theme.min.css" rel="stylesheet">	
 </head>
 
 <body>
 	<tiles:insertAttribute name="header" />
+
 	<div class="container">
 		<tiles:insertAttribute name="body" />
 		<tiles:insertAttribute name="footer" />
 	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>	
+
 </body>
 </html>
