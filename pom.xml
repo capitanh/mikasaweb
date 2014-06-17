@@ -28,6 +28,16 @@
 
 	<!-- =================== Build config	===================	-->
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+      <resource>
+      	<directory>src/test/resources</directory>
+      	<filtering>true</filtering>
+      </resource>
+    </resources>		
 		<extensions>
 			<extension>
 				<groupId>org.apache.maven.archetype</groupId>
@@ -81,8 +91,8 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${jetty.version}</version>
 				<configuration>
-					<jettyXml>src/main/resources/jetty.xml</jettyXml>
-					<jettyEnvXml>src/main/resources/jetty.xml</jettyEnvXml>
+					<jettyXml>target/classes/jetty.xml</jettyXml>
+					<jettyEnvXml>jetty.xml</jettyEnvXml>
 					<scanIntervalSeconds>3</scanIntervalSeconds>
 				</configuration>
 				<dependencies>
@@ -163,9 +173,9 @@
 				</configuration>
 				<dependencies>
 					<dependency>
-						<groupId>com.oracle</groupId>
-						<artifactId>ojdbc6</artifactId>
-						<version>11.1.0.7.0</version>
+						<groupId>${jdbc.groupId}</groupId>
+						<artifactId>${jdbc.artifactId}</artifactId>
+						<version>${jdbc.version}</version>
 					</dependency>
 					<dependency>
 						<groupId>cglib</groupId>
@@ -345,6 +355,9 @@
 				<jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
 				<jdbc.version>5.0.5</jdbc.version>
 				<hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>
+				<jdbc.url>jdbc:mysql://localhost:3306/mikasadb</jdbc.url>
+				<jetty.class>com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource</jetty.class>
+				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 			</properties>
 		</profile>
 		<profile>
@@ -357,6 +370,9 @@
 				<jdbc.artifactId>ojdbc</jdbc.artifactId>
 				<jdbc.version>10.2.0.1.0</jdbc.version>
 				<hibernate.dialect>org.hibernate.dialect.Oracle10gDialect</hibernate.dialect>
+				<jdbc.url>jdbc:oracle:thin:@localhost:1521:XE</jdbc.url>
+				<jetty.class>oracle.jdbc.pool.OracleDataSource</jetty.class>
+				<jdbc.driverClassName>oracle.jdbc.OracleDriver</jdbc.driverClassName>
 			</properties>
 		</profile>
 	</profiles>

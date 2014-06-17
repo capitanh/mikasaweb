@@ -23,8 +23,8 @@
 
 		<div class="row">
 			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-			<div class="col-md-3"></div>
-			<div class="col-md-6">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
 				<div class="well">
 					<form role="form" action="j_spring_security_check" method="POST">
 						<legend>Login Form</legend>
@@ -40,7 +40,7 @@
 					</form>
 				</div>
 			</div>
-			<div class="col-md-3"></div>
+			<div class="col-md-4"></div>
 		</div>
 		
 
