@@ -45,13 +45,10 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-	<!-- Tiles configuration -->
-	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
-		<property name="definitions">
-			<list>
-				<value>/WEB-INF/tiles/tiles-definitions.xml</value>
-			</list>
-		</property>
-	</bean>		
+	<listener>
+    <listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
+	</listener>
+	
+		
 
 </web-app>
