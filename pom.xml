@@ -15,7 +15,8 @@
 		<spring.version>3.2.4.RELEASE</spring.version>
 		<hibernate.version>4.0.0.Final</hibernate.version>
 		<jsf.version>2.2.4</jsf.version>
-		<slf4j-version>1.7.5</slf4j-version>
+		<slf4j-version>1.7.7</slf4j-version>
+		<log4j.version>2.0-rc1</log4j.version>
 		<jetty.version>9.1.5.v20140505</jetty.version>
 	</properties>
 
@@ -202,6 +203,12 @@
 			<artifactId>dbunit</artifactId>
 			<version>2.4.8</version>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -229,13 +236,23 @@
 		</dependency>		
 		<!-- Logging -->
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${slf4j-version}</version>
-		</dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-api</artifactId>
+	    <version>${log4j.version}</version>
+  	</dependency>
+	  <dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-core</artifactId>
+	    <version>${log4j.version}</version>
+	  </dependency>
+	  <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-1.2-api</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
+			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j-version}</version>
 		</dependency>
 		<dependency>
