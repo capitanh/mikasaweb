@@ -33,11 +33,13 @@
 				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
 			</resource>
-      <resource>
-      	<directory>src/test/resources</directory>
-      	<filtering>true</filtering>
-      </resource>
-    </resources>		
+    </resources>
+		<testResources>
+			<testResource> 
+				<directory>src/test/resources</directory> 
+				<filtering>true</filtering> 
+			</testResource> 
+		</testResources>
 		<extensions>
 			<extension>
 				<groupId>org.apache.maven.archetype</groupId>
@@ -91,7 +93,7 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${jetty.version}</version>
 				<configuration>
-					<jettyXml>target/classes/jetty.xml</jettyXml>
+					<jettyXml>target/test-classes/jetty.xml</jettyXml>
 					<jettyEnvXml>jetty.xml</jettyEnvXml>
 					<scanIntervalSeconds>3</scanIntervalSeconds>
 				</configuration>
@@ -333,18 +335,6 @@
 
 	<!-- Profiles -->
 	<profiles>
-		<profile>
-			<id>hsqldb</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<jdbc.groupId>org.hsqldb</jdbc.groupId>
-				<jdbc.artifactId>hsqldb</jdbc.artifactId>
-				<jdbc.version>2.3.1</jdbc.version>
-				<hibernate.dialect>org.hibernate.dialect.HSQLDialect</hibernate.dialect>
-			</properties>
-		</profile>	
 		<profile>
 			<id>mysql</id>
 			<activation>
