@@ -16,6 +16,7 @@
     <logger name="net.sf.appinfo" level="off"/>
     <logger name="org.eclipse.jetty.server" level="info"/>
     -->
+    <logger name="com.gargoylesoftware" level="error"/>
     <root level="info">
       <appenderRef ref="CONSOLE"/>
       <!--

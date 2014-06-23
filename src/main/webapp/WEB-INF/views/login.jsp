@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="eng">
 	<head>
@@ -36,9 +37,14 @@
 							<label for="j_password">Password</label>
 							<input type="password" id="j_password" name="j_password" class="form-control" placeholder="Password"/>
 						</div>
-						<button type="submit" class="btn btn-primary">Login</button>
+						<button id="login" type="submit" class="btn btn-primary">Login</button>
 					</form>
 				</div>
+				<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+					<div class="alert alert-danger">
+						Login error. Please try again
+					</div>
+				</c:if>
 			</div>
 			<div class="col-md-4"></div>
 		</div>

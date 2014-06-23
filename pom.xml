@@ -88,6 +88,42 @@
 					</additionalProjectFacets>
 				</configuration>
 			</plugin>
+			<!-- Exclude selenium tests from unit test phase -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.7.2</version>
+        <configuration>
+          <excludes>
+            <exclude>**/integration/**</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+			<!-- Exclude unit test from integration test phase -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.17</version>
+				<configuration>
+				<includes>
+					<include>**/integration/**</include>
+				</includes>
+        </configuration>				
+				<executions>
+					<execution>
+						<id>integration-test</id>
+						<goals>
+							<goal>integration-test</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>verify</id>
+						<goals>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<!-- Jetty plugin-->
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
@@ -95,13 +131,40 @@
 				<version>${jetty.version}</version>
 				<configuration>
 					<jettyXml>target/test-classes/jetty.xml</jettyXml>
-					<jettyEnvXml>jetty.xml</jettyEnvXml>
 					<scanIntervalSeconds>3</scanIntervalSeconds>
+					<stopPort>8005</stopPort>
+          <stopKey>STOP</stopKey>
+          <contextPath>/mikasaweb</contextPath>					
 				</configuration>
+				<executions>
+					<execution>
+						<id>start-jetty</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<scanIntervalSeconds>0</scanIntervalSeconds>
+							<daemon>true</daemon>
+						</configuration>
+					</execution>
+					<execution>
+						<id>stop-jetty</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>stop</goal>
+						</goals>
+					</execution>
+				</executions>
 				<dependencies>
 					<dependency>
 						<groupId>org.eclipse.jetty</groupId>
 						<artifactId>jetty-webapp</artifactId>
+						<version>${jetty.version}</version>					
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.jetty</groupId>
+						<artifactId>jetty-util</artifactId>
 						<version>${jetty.version}</version>					
 					</dependency>
 					<dependency>
@@ -213,7 +276,7 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>2.24.1</version>
+			<version>2.42.2</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -275,7 +338,14 @@
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-extras</artifactId>
 			<version>3.0.4</version>
-		</dependency>		
+		</dependency>
+		<!--
+		<dependency>
+	    <groupId>xml-apis</groupId>
+	    <artifactId>xml-apis</artifactId>
+	    <version>2.0.2</version>
+		</dependency>
+	-->
 		<!-- Spring Framework -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -337,6 +407,12 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>4.0.0.Final</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>xml-apis</artifactId>
+					<groupId>xml-apis</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>		
 		<dependency>
 			<groupId>org.hibernate</groupId>
