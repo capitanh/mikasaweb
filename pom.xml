@@ -429,6 +429,21 @@
 	<!-- Profiles -->
 	<profiles>
 		<profile>
+			<id>cloudbees</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<jdbc.groupId>mysql</jdbc.groupId>
+				<jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
+				<jdbc.version>5.0.5</jdbc.version>
+				<hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>
+				<jdbc.url>jdbc:mysql://eu-cdbr-cb-west-01.cleardb.net:3306/cb_mikasadb</jdbc.url>
+				<jetty.class>com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource</jetty.class>
+				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+			</properties>
+		</profile>		
+		<profile>
 			<id>mysql</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
