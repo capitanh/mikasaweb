@@ -21,7 +21,7 @@ repositories {
 	mavenCentral()
 }
 
-[jettyRun]*.jettyEnvXml = file('src/main/resources/jetty.xml')
+[jettyRun]*.jettyEnvXml = file('src/test/resources/jetty.xml')
 
 dependencies {
     compile(

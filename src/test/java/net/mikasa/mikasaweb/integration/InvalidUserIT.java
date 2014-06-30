@@ -25,7 +25,7 @@ public class InvalidUserIT {
   }
 
   @Test
-  public void testValidUser() throws Exception {
+  public void testInValidUser() throws Exception {
     driver.get(baseUrl + "/login");
     driver.findElement(By.id("j_username")).clear();
     driver.findElement(By.id("j_username")).sendKeys("invalid");
