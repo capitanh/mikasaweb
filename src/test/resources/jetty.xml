@@ -9,8 +9,8 @@
 		<Arg>
 			<New class="${jetty.class}">
 				<Set name="URL">${jdbc.url}</Set>
-				<Set name="User">mikasadb</Set>
-				<Set name="Password">mikasadb</Set>
+				<Set name="User">${jdbc.username}</Set>
+				<Set name="Password">${jdbc.password}</Set>
 			</New>
 			<!--
 			<New class="oracle.jdbc.pool.OracleDataSource">
