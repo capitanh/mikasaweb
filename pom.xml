@@ -443,6 +443,7 @@
 				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 				<jdbc.username>b31fc994b3bc08</jdbc.username>
 				<jdbc.password>15e3855c</jdbc.password>
+				<jndi.name>java:comp/env/jdbc/mikasadb</jndi.name>
 			</properties>
 		</profile>		
 		<profile>
@@ -459,7 +460,8 @@
 				<jetty.class>com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource</jetty.class>
 				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 				<jdbc.username>mikasadb</jdbc.username>
-				<jdbc.password>mikasadb</jdbc.password>				
+				<jdbc.password>mikasadb</jdbc.password>
+				<jndi.name>jdbc/mikasadb</jndi.name>
 			</properties>
 		</profile>
 		<profile>
@@ -476,7 +478,8 @@
 				<jetty.class>oracle.jdbc.pool.OracleDataSource</jetty.class>
 				<jdbc.driverClassName>oracle.jdbc.OracleDriver</jdbc.driverClassName>
 				<jdbc.username>mikasadb</jdbc.username>
-				<jdbc.password>mikasadb</jdbc.password>								
+				<jdbc.password>mikasadb</jdbc.password>
+				<jndi.name>jdbc/mikasadb</jndi.name>
 			</properties>
 		</profile>
 	</profiles>
