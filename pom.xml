@@ -134,7 +134,9 @@
 					<scanIntervalSeconds>3</scanIntervalSeconds>
 					<stopPort>8005</stopPort>
           <stopKey>STOP</stopKey>
-          <contextPath>/mikasaweb</contextPath>					
+					<webApp>
+						<contextPath>/mikasaweb</contextPath>
+					</webApp>          
 				</configuration>
 				<executions>
 					<execution>
