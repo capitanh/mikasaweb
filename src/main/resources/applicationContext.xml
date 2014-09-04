@@ -32,10 +32,7 @@
     </property>		
 		<property name="packagesToScan" value="net.mikasa.mikasaweb.model" />
 	</bean>	
-	<!--
 	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/mikasadb" resource-ref="true" />
-	-->
-	<jee:jndi-lookup id="dataSource" jndi-name="${jndi.name}" resource-ref="true" />
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
 	<bean class="org.springframework.orm.hibernate4.HibernateExceptionTranslator"/>
 			
