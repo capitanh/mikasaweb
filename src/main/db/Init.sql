@@ -1,4 +1,3 @@
--- MySQL
 drop database mikasadb;
 drop user 'mikasadb'@'localhost';
 create database mikasadb;
