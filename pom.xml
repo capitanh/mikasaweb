@@ -451,7 +451,7 @@
 		<profile>
 			<id>mysql</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
 				<jdbc.groupId>mysql</jdbc.groupId>
@@ -469,7 +469,7 @@
 		<profile>
 			<id>oracle</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
 				<jdbc.groupId>com.oracle</jdbc.groupId>
