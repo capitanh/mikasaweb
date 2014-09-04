@@ -5,7 +5,7 @@
 	<Set name="contextPath">/mikasaweb</Set>
 	-->
 	<New id="mikasadb" class="org.eclipse.jetty.plus.jndi.Resource">
-		<Arg>jdbc/mikasadb</Arg>
+		<Arg>${jndi.name}</Arg>
 		<Arg>
 			<New class="${jetty.class}">
 				<Set name="URL">${jdbc.url}</Set>
