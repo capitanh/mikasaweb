@@ -21,15 +21,17 @@ repositories {
 	mavenCentral()
 }
 
-jettyRun.jettyConfig = new File('target/test-classes/jetty.xml')
-jettyRun.stopPort = 8090
-jettyRun.stopKey = 'stopKey'
-jettyStop.stopPort = 8090
-jettyStop.stopKey = 'stopKey'
+test{
+	exclude '**/integration'
+}
+
+//jettyRun.jettyConfig = new File('target/test-classes/jetty.xml')
+[jettyRun,jettyStop]*.stopPort = 8090
+[jettyRun,jettyStop]*.stopKey = 'stopKey'
 
 dependencies {
     compile(
-    	'org.eclipse.jetty:jetty-webapp:9.1.5.v20140505',
+    	//'org.eclipse.jetty:jetty-webapp:9.1.5.v20140505',
 			//logging
 			'org.slf4j:slf4j-log4j12:1.7.2',
 			'net.sf.appinfo:appinfo:0.5.2',

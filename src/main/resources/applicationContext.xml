@@ -27,7 +27,10 @@
 		</property>
 		<property name="jpaProperties">
 			<props>
+				<!--
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				-->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
       </props>
     </property>		
 		<property name="packagesToScan" value="net.mikasa.mikasaweb.model" />
@@ -37,9 +40,6 @@
 	<bean class="org.springframework.orm.hibernate4.HibernateExceptionTranslator"/>
 			
 	<!-- Spring security -->
-	<!--
-	<import resource="securityContext.xml" />		
-	-->
 	<security:http auto-config="true">
 		<security:intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY"/>		
 		<security:intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
