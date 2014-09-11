@@ -40,6 +40,9 @@
 			</props>
 		</property>		
 	</bean>
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
+	<bean class="org.springframework.orm.hibernate4.HibernateExceptionTranslator"/>
+		
 	<!-- DBUnit stuff -->
 	<bean id="h2DataTypeFactory" class="org.dbunit.ext.h2.H2DataTypeFactory"/>
 	<bean id="dbUnitDatabaseConnection" class="com.github.springtestdbunit.bean.DatabaseDataSourceConnectionFactoryBean">
@@ -50,7 +53,6 @@
 		<property name="datatypeFactory" ref="h2DataTypeFactory" />
 	</bean>	
 	
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
-	<bean class="org.springframework.orm.hibernate4.HibernateExceptionTranslator"/>
+
 
 </beans>
