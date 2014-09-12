@@ -11,8 +11,6 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			classpath:applicationContext.xml
-			classpath:net/sf/appinfo/appInfoDefaultContext.xml
-			classpath:net/sf/appinfo/appInfoWebContext.xml	
 		</param-value>
 	</context-param>
 	<listener>
@@ -51,19 +49,22 @@
 	</listener>
 	-->
 
+	<!-- Lightadmin -->
 	<context-param>
 	 <param-name>light:administration:base-url</param-name>
 	 <param-value>/admin</param-value>
 	</context-param>
-	 
 	<context-param>
 	 <param-name>light:administration:security</param-name>
-	 <param-value>true</param-value>
+	 <param-value>false</param-value>
 	</context-param>
-	 
 	<context-param>
 	 <param-name>light:administration:base-package</param-name>
 	 <param-value>net.mikasa.mikasaweb.config</param-value>
+	</context-param>	
+	<context-param>
+		<param-name>light:administration:back-to-site-url</param-name>
+		<param-value>/mikasaweb/home</param-value>
 	</context-param>	
 
 </web-app>

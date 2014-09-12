@@ -14,7 +14,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		  <ul class="nav navbar-nav navbar-right">
 		    <p class="navbar-text"><span class="glyphicon glyphicon-user"></span> Logged in as: ${user}</p>
-		   <li><a href="javascript:;"> Settings </a></li>
+		   <li><a href="admin"> Administration </a></li>
 		   <li><a href="/j_spring_security_logout">Logout</a></li>        
 		  </ul>
 		</div>	    
