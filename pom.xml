@@ -12,7 +12,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- Frameworks versions -->
-		<spring.version>3.2.4.RELEASE</spring.version>
+		<spring.version>4.0.7.RELEASE</spring.version>
 		<hibernate.version>4.0.0.Final</hibernate.version>
 		<jsf.version>2.2.4</jsf.version>
 		<slf4j-version>1.7.7</slf4j-version>
@@ -290,7 +290,7 @@
 		<dependency>
 			<groupId>com.github.springtestdbunit</groupId>
 			<artifactId>spring-test-dbunit</artifactId>
-			<version>1.0.1</version>
+			<version>1.1.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -337,17 +337,24 @@
 			<version>1.2</version>
 		</dependency>
 		<dependency>
+			<groupId>org.lightadmin</groupId>
+			<artifactId>lightadmin</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
+		<!--
+		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-extras</artifactId>
 			<version>3.0.4</version>
 		</dependency>
+		-->
 		<!--
 		<dependency>
 	    <groupId>xml-apis</groupId>
 	    <artifactId>xml-apis</artifactId>
 	    <version>2.0.2</version>
 		</dependency>
-	-->
+		-->
 		<!-- Spring Framework -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -387,7 +394,7 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			<version>1.4.2.RELEASE</version>
+			<version>1.6.4.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -424,7 +431,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>4.0.0.GA</version>
+			<version>5.0.3.Final</version>
 		</dependency>
 	</dependencies>
 
@@ -433,7 +440,7 @@
 		<profile>
 			<id>cloudbees</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
 				<jdbc.groupId>mysql</jdbc.groupId>
@@ -450,7 +457,7 @@
 		<profile>
 			<id>mysql</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 			<properties>
 				<jdbc.groupId>mysql</jdbc.groupId>
