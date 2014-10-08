@@ -1,13 +1,16 @@
 <?xml version="1.0"  encoding="UTF-8"?>
-<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://www.eclipse.org/jetty/configure_9_0.dtd">
+<!--
 <Configure class="org.eclipse.jetty.webapp.WebAppContext">
+-->
+<Configure class="org.eclipse.jetty.server.Server">
 	<New id="mikasadb" class="org.eclipse.jetty.plus.jndi.Resource">
+		<Arg></Arg>
 		<Arg>jdbc/mikasadb</Arg>
 		<Arg>
-			<New class="${jetty.class}">
-				<Set name="URL">${jdbc.url}</Set>
-				<Set name="User">${jdbc.username}</Set>
-				<Set name="Password">${jdbc.password}</Set>
+			<New class="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource">
+				<Set name="Url">jdbc:mysql://localhost:3306/mikasadb</Set>
+				<Set name="User">mikasadb</Set>
+				<Set name="Password">mikasadb</Set>
 			</New>
 			<!--
 			<New class="oracle.jdbc.pool.OracleDataSource">

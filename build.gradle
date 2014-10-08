@@ -3,9 +3,18 @@
 # mikasaweb gradle build script                                             #
 #############################################################################
 */
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'org.akhikhl.gretty:gretty:+'
+  }
+}
+
 apply plugin: 'war'
 apply plugin: 'eclipse-wtp'
-apply plugin: 'jetty'
+apply plugin: 'org.akhikhl.gretty'
 defaultTasks 'clean','build'
 
 group = 'net.mikasa'
@@ -19,26 +28,30 @@ targetCompatibility = 1.7
 repositories {
 	mavenLocal()
 	mavenCentral()
+	jcenter()
 }
 
-test{
-	exclude '**/integration'
+gretty {
+  servletContainer = 'jetty8'
+  serverConfigFile = '/home/luis/dev/projects/personal/mikasaweb/src/test/resources/jetty.xml'
+  integrationTestTask = 'test' // name of existing gradle task
 }
-
-//jettyRun.jettyConfig = new File('target/test-classes/jetty.xml')
-[jettyRun,jettyStop]*.stopPort = 8090
-[jettyRun,jettyStop]*.stopKey = 'stopKey'
 
 dependencies {
+		gretty (
+			'mysql:mysql-connector-java:5.0.5',
+			'org.apache.tiles:tiles-core:2.1.4',
+			'org.apache.tiles:tiles-api:2.1.4'
+		)
     compile(
-    	//'org.eclipse.jetty:jetty-webapp:9.1.5.v20140505',
 			//logging
 			'org.slf4j:slf4j-log4j12:1.7.2',
 			'net.sf.appinfo:appinfo:0.5.2',
 			//general
 			'javax.servlet:jstl:1.2',
-			'org.apache.tiles:tiles-extras:3.0.4',
-			'mysql:mysql-connector-java:5.0.5',
+			//'org.apache.tiles:tiles-extras:2.1.4',
+			//'mysql:mysql-connector-java:5.0.5',
+			'org.lightadmin:lightadmin:1.0.0.RELEASE',
 			//spring
 			'org.springframework:spring-core:3.2.4.RELEASE',
 			'org.springframework:spring-web:3.2.4.RELEASE',
@@ -63,6 +76,5 @@ dependencies {
 			'com.github.springtestdbunit:spring-test-dbunit:1.0.1',
 			'com.h2database:h2:1.3.174',
 			'org.dbunit:dbunit:2.4.8'
-			//'org.eclipse.jetty:jetty-webapp:9.1.5.v20140505'			
 		)
 }
