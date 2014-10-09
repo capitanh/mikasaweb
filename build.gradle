@@ -15,7 +15,6 @@ buildscript {
 apply plugin: 'war'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'org.akhikhl.gretty'
-defaultTasks 'clean','build'
 
 group = 'net.mikasa'
 version = '3.0.0-SNAPSHOT'
@@ -31,10 +30,18 @@ repositories {
 	jcenter()
 }
 
+test {
+  exclude '**/integration/*'
+}
+
+task integrationTest(type: Test, dependsOn: 'test') {
+  include '**/integration/*'
+}
+
 gretty {
   servletContainer = 'jetty8'
   serverConfigFile = '/home/luis/dev/projects/personal/mikasaweb/src/test/resources/jetty.xml'
-  integrationTestTask = 'test' // name of existing gradle task
+  integrationTestTask = 'integrationTest' // name of existing gradle task
 }
 
 dependencies {
@@ -49,7 +56,8 @@ dependencies {
 			'net.sf.appinfo:appinfo:0.5.2',
 			//general
 			'javax.servlet:jstl:1.2',
-			//'org.apache.tiles:tiles-extras:2.1.4',
+			'org.apache.tiles:tiles-core:2.1.4',
+			'org.apache.tiles:tiles-api:2.1.4',
 			//'mysql:mysql-connector-java:5.0.5',
 			'org.lightadmin:lightadmin:1.0.0.RELEASE',
 			//spring
