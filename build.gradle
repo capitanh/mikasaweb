@@ -31,17 +31,26 @@ repositories {
 	jcenter()
 }
 
+test {
+  exclude '**/integration/*.*'
+}
+
+task integrationTest(type: Test, dependsOn: 'test'){
+	outputs.upToDateWhen { false }
+	include '**/integration/*.*'
+	doFirst {
+    systemProperty 'geb.build.reportsDir', reporting.file('geb')
+  }	
+}
+
 gretty {
   servletContainer = 'jetty8'
-  serverConfigFile = '/home/luis/dev/projects/personal/mikasaweb/src/test/resources/jetty.xml'
-  integrationTestTask = 'test' // name of existing gradle task
+  integrationTestTask = 'integrationTest' // name of existing gradle task
 }
 
 dependencies {
 		gretty (
 			'mysql:mysql-connector-java:5.0.5',
-			'org.apache.tiles:tiles-core:2.1.4',
-			'org.apache.tiles:tiles-api:2.1.4'
 		)
     compile(
 			//logging
@@ -49,9 +58,10 @@ dependencies {
 			'net.sf.appinfo:appinfo:0.5.2',
 			//general
 			'javax.servlet:jstl:1.2',
-			//'org.apache.tiles:tiles-extras:2.1.4',
-			//'mysql:mysql-connector-java:5.0.5',
+			'org.apache.tiles:tiles-extras:3.0.4',
 			'org.lightadmin:lightadmin:1.0.0.RELEASE',
+			'org.webjars:bootstrap:3.2.0',
+  		'org.webjars:jquery:2.1.1',
 			//spring
 			'org.springframework:spring-core:3.2.4.RELEASE',
 			'org.springframework:spring-web:3.2.4.RELEASE',
