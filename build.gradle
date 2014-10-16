@@ -35,12 +35,13 @@ test {
   exclude '**/integration/*.*'
 }
 
-task integrationTest(type: Test, dependsOn: 'test'){
-	outputs.upToDateWhen { false }
+task integrationTest(type: Test){
 	include '**/integration/*.*'
-	doFirst {
-    systemProperty 'geb.build.reportsDir', reporting.file('geb')
-  }	
+}
+
+task testReport(type: TestReport){
+	destinationDir = new File("C:/Reports")
+	reportOn(test,integrationTest)
 }
 
 gretty {
@@ -88,3 +89,40 @@ dependencies {
 			'org.dbunit:dbunit:2.4.8'
 		)
 }
+
+/* //spring boot script
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'spring-boot'
+apply plugin: 'eclipse-wtp'
+
+group = 'net.mikasa'
+version = '1.0.0-SNAPSHOT'
+description = "Spring Boot POC"
+
+buildscript {
+  repositories {
+    jcenter()
+    mavenLocal()
+    mavenCentral()
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:+")
+  }
+}
+
+repositories {
+    jcenter()
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile("com.h2database:h2")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+*/
