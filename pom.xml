@@ -130,7 +130,7 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${jetty.version}</version>
 				<configuration>
-					<jettyXml>target/test-classes/jetty.xml</jettyXml>
+					<jettyXml>jetty.xml</jettyXml>
 					<scanIntervalSeconds>3</scanIntervalSeconds>
 					<stopPort>8005</stopPort>
           <stopKey>STOP</stopKey>
@@ -343,12 +343,13 @@
 			<artifactId>lightadmin</artifactId>
 			<version>1.0.0.RELEASE</version>
 		</dependency>
-		<!--
+		
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-extras</artifactId>
-			<version>2.2.2</version>
+			<version>3.0.4</version>
 		</dependency>
+		<!--
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-request-api</artifactId>
