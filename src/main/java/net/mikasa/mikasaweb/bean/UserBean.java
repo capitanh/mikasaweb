@@ -14,7 +14,7 @@ public class UserBean
 	public User getUser() {
 		
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		User user = new User();
+		//User user = new User();
 		user.setUsername(userDetails.getUsername());
 		return user;
 	}
