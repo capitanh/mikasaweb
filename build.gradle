@@ -31,6 +31,7 @@ repositories {
 	jcenter()
 }
 
+//Tests configurations
 test {
   exclude '**/integration/*.*'
 }
@@ -47,6 +48,29 @@ task testReport(type: TestReport){
 gretty {
   servletContainer = 'jetty8'
   integrationTestTask = 'integrationTest' // name of existing gradle task
+}
+
+//Custom MANIFEST
+def buildId() {
+	def build_id='B'+new Date().format('yyyyMMdd HHmm ')+System.properties.'user.name'
+	def gitref="git rev-parse --short HEAD".execute().text.trim()
+	def gittag="git describe --tags --always $gitref".execute().text.trim()
+	def gitdirty="git status --porcelain".execute().text.isEmpty()?" ":"*"
+	build_id=" $gittag$gitdirty "+build_id;
+	return build_id
+}
+
+war {
+	manifest{
+		attributes(
+			"Implementation-Title": project.description,
+			"Implementation-Version": version,
+			"Build-date": new Date().format('dd-MM-yyyy')
+			"Build-by": System.properties.'user.name'
+			"git-revision": "git rev-parse --short HEAD".execute().text.trim()
+
+		)
+	}
 }
 
 dependencies {
