@@ -65,10 +65,10 @@ war {
 		attributes(
 			"Implementation-Title": project.description,
 			"Implementation-Version": version,
-			"Build-date": new Date().format('dd-MM-yyyy')
-			"Build-by": System.properties.'user.name'
-			"git-revision": "git rev-parse --short HEAD".execute().text.trim()
-
+			"Build-date": new Date().format('dd-MM-yyyy'),
+			"Build-by": System.properties.'user.name',
+			"git-revision": "git rev-parse --short HEAD".execute().text.trim(),
+			"git-branch": "git status -bs -u no".execute().text.trim()
 		)
 	}
 }
