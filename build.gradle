@@ -41,7 +41,7 @@ task integrationTest(type: Test){
 }
 
 task testReport(type: TestReport){
-	destinationDir = new File("build/reports")
+	destinationDir = new File("build/reports/tests")
 	reportOn(test,integrationTest)
 }
 
