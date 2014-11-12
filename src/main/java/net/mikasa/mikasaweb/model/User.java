@@ -20,11 +20,11 @@ import javax.persistence.Table;
 @Table(name="users")
 public class User  implements java.io.Serializable {
 
-
-     private String username;
-     private String password;
-     private BigDecimal enabled;
-     private Set<Authority> authorities = new HashSet<Authority>(0);
+	private static final long serialVersionUID = -7865444145987849091L;
+	private String username;
+	private String password;
+	private BigDecimal enabled;
+	private Set<Authority> authorities = new HashSet<Authority>(0);
 
     public User() {
     }

@@ -22,8 +22,8 @@ import javax.persistence.UniqueConstraint;
 )
 public class Authority  implements java.io.Serializable {
 
-
-     private AuthorityId id;
+	private static final long serialVersionUID = -5062379823861458659L;
+	private AuthorityId id;
      private User user;
 
     public Authority() {
