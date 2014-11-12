@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<dataset>
-	<USERS USERNAME="admin" PASSWORD="admin" ENABLED="1"/>
-	<AUTHORITIES USERNAME="admin" AUTHORITY="administrator"/>
-</dataset>

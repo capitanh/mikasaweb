@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserBean 
 {
-	private User user;
-
 	public User getUser() {
 		
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -18,10 +16,5 @@ public class UserBean
 		user.setUsername(userDetails.getUsername());
 		return user;
 	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-	
 	
 }

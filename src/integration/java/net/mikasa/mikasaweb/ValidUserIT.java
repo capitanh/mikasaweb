@@ -1,4 +1,4 @@
-package net.mikasa.mikasaweb.integration;
+package net.mikasa.mikasaweb;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
@@ -27,12 +27,13 @@ public class ValidUserIT {
   @Test
   public void testValidUser() throws Exception {
     driver.get(baseUrl + "/login");
-    driver.findElement(By.id("j_username")).clear();
-    driver.findElement(By.id("j_username")).sendKeys("admin");
-    driver.findElement(By.id("j_password")).clear();
-    driver.findElement(By.id("j_password")).sendKeys("admin");
+    driver.findElement(By.id("username")).clear();
+    driver.findElement(By.id("username")).sendKeys("admin");
+    driver.findElement(By.id("password")).clear();
+    driver.findElement(By.id("password")).sendKeys("admin");
     driver.findElement(By.id("login")).click();
-    assertEquals("mikasa.net 3.0 beta. Welcome", driver.findElement(By.cssSelector("div.col-md-12")).getText());
+    assertTrue(driver.getPageSource().contains("mikasa.net 4.0 beta. Welcome"));
+    
   }
 
   @After

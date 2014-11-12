@@ -1,7 +1,6 @@
 package net.mikasa.mikasaweb.controller;
 
 import net.mikasa.mikasaweb.bean.UserBean;
-import net.mikasa.mikasaweb.model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +13,7 @@ public class HomeController
 	@Autowired
 	private UserBean userBean;
 	
-	@RequestMapping("/home")
+	@RequestMapping("/")
 	public String showHomePage(Model model) 
 	{
 		String currentUser = userBean.getUser().getUsername();

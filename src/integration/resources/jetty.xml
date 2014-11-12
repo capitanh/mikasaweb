@@ -1,7 +1,4 @@
 <?xml version="1.0"  encoding="UTF-8"?>
-<!--
-<Configure class="org.eclipse.jetty.webapp.WebAppContext">
--->
 <Configure class="org.eclipse.jetty.server.Server">
 	<New id="mikasadb" class="org.eclipse.jetty.plus.jndi.Resource">
 		<Arg></Arg>
@@ -12,15 +9,6 @@
 				<Set name="User">mikasadb</Set>
 				<Set name="Password">mikasadb</Set>
 			</New>
-			<!--
-			<New class="oracle.jdbc.pool.OracleDataSource">
-				<Set name="DriverType">thin</Set>
-        <Set name="URL">jdbc:oracle:thin:@localhost:1521:XE</Set>
-        <Set name="User">mikasadb</Set>
-        <Set name="Password">mikasadb</Set>
-        <Set name="connectionCachingEnabled">true</Set>
-			</New>
-			-->
 		</Arg>
 	</New>
 </Configure>
