@@ -3,8 +3,40 @@
 <head>
     <title>mikasaweb 4.0.0</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.0/css/bootstrap.min.css" />
 </head>
 <body>
-    <p th:text="'mikasa.net 4.0 beta. Welcome'" />
+
+	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+		      <a class="navbar-brand" href="#">
+		        <img alt="Brand" src=""/>
+		      </a>
+		    </div>
+				<p class="navbar-text navbar-left">mikasa.net 4.0 beta</p>
+				<a class="navbar-text" href="logout">logout</a>
+			</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="row">
+		<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<div class="well">
+					<p th:text="'mikasa.net 4.0 beta. Welcome'" />
+					
+				</div>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+	</div>	
+  
+	<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+  	<div class="container">
+    	<p class="navbar-text navbar-right">version:</p>
+  	</div>
+</nav>
+  
 </body>
 </html>
