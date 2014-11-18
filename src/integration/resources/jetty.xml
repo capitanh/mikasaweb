@@ -11,4 +11,7 @@
 			</New>
 		</Arg>
 	</New>
+	<New id="context" class="org.eclipse.jetty.servlet.ServletContextHandler">
+    <Set name="contextPath">/mikasaweb</Set>
+  </New>	
 </Configure>

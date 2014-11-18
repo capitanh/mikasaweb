@@ -52,7 +52,7 @@ gretty {
 }
 
 dependencies {
-	gretty  'mysql:mysql-connector-java:5.0.5'
+	gretty 'mysql:mysql-connector-java:5.0.5'
 
   testCompile 'org.springframework.boot:spring-boot-starter-test'
   testCompile 'org.dbunit:dbunit:2.5.0'
@@ -64,8 +64,9 @@ dependencies {
 	integrationCompile 'junit:junit:4.11'
 	integrationCompile 'org.seleniumhq.selenium:selenium-java:2.44.0'
   
+  compile 'com.jcabi:jcabi-manifests:1.1'
   compile 'org.webjars:bootstrap:3.3.0'
-  compile 'org.springframework.boot:spring-boot-starter-web'
+	compile 'org.springframework.boot:spring-boot-starter-web'
   compile 'org.springframework.boot:spring-boot-starter-security'
   compile 'org.springframework.boot:spring-boot-starter-data-jpa'
   compile 'org.springframework.boot:spring-boot-starter-thymeleaf'

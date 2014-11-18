@@ -2,14 +2,21 @@ package net.mikasa.mikasaweb.controller;
 
 import net.mikasa.mikasaweb.bean.UserBean;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.jcabi.manifests.Manifests;
+
 @Controller
 public class HomeController
 {
+	private static Logger log = LoggerFactory.getLogger(HomeController.class);
+	
 	@Autowired
 	private UserBean userBean;
 	
@@ -17,7 +24,10 @@ public class HomeController
 	public String showHomePage(Model model) 
 	{
 		String currentUser = userBean.getUser().getUsername();
+		String appVersion = Manifests.read("Implementation-Version");
+		log.info(appVersion);
 		model.addAttribute("user",currentUser);
+		model.addAttribute("appVersion",appVersion);
 		return "index";
 	}
 
