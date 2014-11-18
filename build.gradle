@@ -46,6 +46,7 @@ war {
 }
 
 gretty {
+  contextPath = '/mikasaweb'
   servletContainer = 'jetty9'
   serverConfigFile = 'src/integration/resources/jetty.xml'
   springBoot = true
