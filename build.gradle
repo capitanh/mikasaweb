@@ -95,7 +95,7 @@ publishing {
   }
   publications {
     snapshot(MavenPublication) {
-      artifactId project.name
+      artifactId Project.getName()
       from components.web
       ext.repo = 'NexusSnapshots'
     }
