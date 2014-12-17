@@ -8,8 +8,8 @@ buildscript {
 }
 
 repositories {
-  mavenLocal()
-  mavenCentral()
+  //mavenLocal()
+  //mavenCentral()
   jcenter()
 }
 
