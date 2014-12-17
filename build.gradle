@@ -96,8 +96,8 @@ publishing {
   publications {
     snapshot(MavenPublication) {
       groupId group
-      artifactId name
-      version version      
+      artifactId 'mikasaweb'
+      version version
       from components.web
       ext.repo = 'NexusSnapshots'
     }
