@@ -87,6 +87,7 @@ dependencies {
 publishing {
   def nexusUser = System.getenv('nexusUser')
   def nexusPassword = System.getenv('nexusPassword')
+  def artifact = rootProject.name
   repositories {
     maven {
       name 'NexusSnapshots'
@@ -107,7 +108,7 @@ publishing {
   }
   publications {
     snapshot(MavenPublication) {
-      artifactId 'mikasaweb'
+      artifactId artifact
       from components.web
       ext.repo = 'NexusSnapshots'
     }
