@@ -79,7 +79,7 @@ publishing {
   repositories {
     maven {
       name 'NexusSnapshots'
-      url 'http://localhost:8082/nexus/content/repositories/snapshots/'
+      url System.getenv('nexusSnapshotsURL')
       credentials {
         username System.getenv('nexusUser')
         password System.getenv('nexusPassword')
@@ -87,7 +87,7 @@ publishing {
     }
     maven {
       name 'NexusReleases'
-      url 'http://localhost:8082/nexus/content/repositories/releases/'
+      url url System.getenv('nexusReleasesURL')
       credentials {
         username System.getenv('nexusUser')
         password System.getenv('nexusPassword')
