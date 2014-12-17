@@ -1,3 +1,4 @@
+
 buildscript {
   repositories {
     jcenter()
@@ -95,7 +96,7 @@ publishing {
   }
   publications {
     snapshot(MavenPublication) {
-      artifactId Project.getName()
+      artifactId rootProject.name
       from components.web
       ext.repo = 'NexusSnapshots'
     }
