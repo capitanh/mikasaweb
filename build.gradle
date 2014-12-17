@@ -76,13 +76,15 @@ dependencies {
 }
 
 publishing {
+  def nexusUser = System.getenv('nexusUser')
+  def nexusPassword = System.getenv('nexusPassword')
   repositories {
     maven {
       name 'NexusSnapshots'
       url System.getenv('nexusSnapshotsURL')
       credentials {
-        username System.getenv('nexusUser')
-        password System.getenv('nexusPassword')
+        username nexusUser
+        password nexusPassword
       }
     }
     maven {
