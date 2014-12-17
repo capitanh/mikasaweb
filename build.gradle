@@ -96,6 +96,7 @@ publishing {
   }
   publications {
     snapshot(MavenPublication) {
+      artifactId 'mikasaweb'
       from components.web
       ext.repo = 'NexusSnapshots'
     }
