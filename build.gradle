@@ -87,7 +87,7 @@ publishing {
     }
     maven {
       name 'NexusReleases'
-      url url System.getenv('nexusReleasesURL')
+      url System.getenv('nexusReleasesURL')
       credentials {
         username System.getenv('nexusUser')
         password System.getenv('nexusPassword')
