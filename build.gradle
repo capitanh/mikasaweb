@@ -75,6 +75,14 @@ dependencies {
   compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
 }
 
+/*
+* Nexus Publishing Info
+* Usage: Define following environment variables (local or inside jenkins config):
+*   nexusUser: Nexus deployer username
+*   nexusPassword: Nexus deployer password
+*   nexusSnapshotsURL: Nexus Snapshots repo URL
+*   nexusReleasesURL: Nexus Releases repo URL
+*/
 publishing {
   def nexusUser = System.getenv('nexusUser')
   def nexusPassword = System.getenv('nexusPassword')
