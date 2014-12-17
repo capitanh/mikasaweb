@@ -77,11 +77,12 @@ dependencies {
 
 /*
 * Nexus Publishing Info
-* Usage: Define following environment variables (local or inside jenkins config):
+* Define following environment variables (local or inside jenkins config):
 *   nexusUser: Nexus deployer username
 *   nexusPassword: Nexus deployer password
 *   nexusSnapshotsURL: Nexus Snapshots repo URL
 *   nexusReleasesURL: Nexus Releases repo URL
+* Usage: gradle publishSnapshotPublicationToNexusSnapshotsRepository
 */
 publishing {
   def nexusUser = System.getenv('nexusUser')
