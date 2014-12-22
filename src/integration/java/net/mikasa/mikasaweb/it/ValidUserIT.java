@@ -1,4 +1,4 @@
-package net.mikasa.mikasaweb;
+package net.mikasa.mikasaweb.it;
 
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
