@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: yes
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+    LANGUAGE: en_US.UTF-8
+    LC_ALL: en_US.UTF-8
+  roles:
+  - base  

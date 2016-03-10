@@ -1,0 +1,21 @@
+#################################################
+# General Settings
+hostname: mikasaweb.golili.net
+remote_user: vagrant
+filespath: ../../../../src/main/db
+
+#################################################
+# Mysql Settings
+ddbbname: mikasadb
+ddbbuser: mikasadb
+ddbbpassword: mikasadb
+ddbbrootpwd: saupw
+
+#################################################
+# OpenLDAP Settings
+# admin_user: admin
+admin_password: secret
+ddbb_path: /var/lib/ldap/golili
+base_dn: dc=golili,dc=net
+ldap_host: localhost
+ldap_port: 389
