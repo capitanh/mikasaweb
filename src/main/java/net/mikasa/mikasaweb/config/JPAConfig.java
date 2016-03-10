@@ -18,7 +18,7 @@ public class JPAConfig {
 	private String jndiName;
 	
 	@Bean
-    public DataSource dataSource() 
+  public DataSource dataSource() 
 	{
 		final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
 		dsLookup.setResourceRef(true);
