@@ -9,7 +9,6 @@ filespath: ../../../../src/main/db
 ddbbname: mikasadb
 ddbbuser: mikasadb
 ddbbpassword: mikasadb
-ddbbrootpwd: saupw
 
 #################################################
 # OpenLDAP Settings
