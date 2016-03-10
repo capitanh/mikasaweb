@@ -1,4 +1,3 @@
-/*
 package net.mikasa.mikasaweb.config;
 
 import javax.sql.DataSource;
@@ -39,4 +38,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 }
-*/

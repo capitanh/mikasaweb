@@ -21,11 +21,11 @@ public class HomeController
 	@RequestMapping("/")
 	public String showHomePage(Model model) 
 	{
-		String currentUser = userBean.getUser().getUsername();
+		/*String currentUser = userBean.getUser().getUsername();
 		String appVersion = Manifests.read("Implementation-Version");
 		log.info(currentUser);
 		model.addAttribute("user",currentUser);
-		model.addAttribute("appVersion",appVersion);
+		model.addAttribute("appVersion",appVersion);*/
 		return "index";
 	}
 
