@@ -7,4 +7,4 @@
 /build
 /bin
 .vagrant
-/ansible/.gradle
+./ansible/.gradle/
