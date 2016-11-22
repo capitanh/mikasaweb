@@ -1,0 +1,10 @@
+---
+provisioning: puppet  # [puppet|ansible]
+vb_name: mikasaweb
+vb_memory: 4096
+vb_cpus: 2
+#box_name: ubuntu/trusty64
+box_name: ubuntu/xenial64
+host_name: mikasaweb.golili.net
+locale_lc_all: en_US.UTF-8
+locale_lang: en_US.UTF-8
