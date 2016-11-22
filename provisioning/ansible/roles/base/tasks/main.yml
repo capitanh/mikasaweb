@@ -23,7 +23,7 @@
   mysql_db: state=import name={{ddbbname}} target=/tmp/Schema.sql
 - name: Load master data
   mysql_db: state=import name={{ddbbname}} target=/tmp/MasterData.sql
-- name: Copy my.cnf file
-  copy: src=my.cnf dest=/etc/mysql owner=root group=root mode=644
+#- name: Copy my.cnf file
+#  copy: src=my.cnf dest=/etc/mysql owner=root group=root mode=644
 - name: Restart mysql service
   service: name=mysql state=restarted
