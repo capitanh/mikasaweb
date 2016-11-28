@@ -8,8 +8,6 @@ ENV["LC_ALL"] = settings['locale_lc_all']
 ENV["LANG"] = settings['locale_lang']
 
 Vagrant.configure(2) do |config|
-  #config.vm.box = "ubuntu/trusty64"
-  config.vm.box = "ubuntu/xenial64"
   config.vm.box = settings['box_name']
   config.vm.network "forwarded_port", guest: 3306, host: 13306
   config.vm.provider "virtualbox" do |vb|

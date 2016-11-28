@@ -1,15 +1,15 @@
 ---
-- name: Set hostname
-  hostname: name={{hostname}}
-- name: Generate locale
-  locale_gen: name=en_US.UTF-8 state=present
-- name: Reconfigure locales
-  shell: dpkg-reconfigure locales
+#- name: Set hostname
+#  hostname: name={{hostname}}
+#- name: Generate locale
+#  locale_gen: name=en_US.UTF-8 state=present
+#- name: Reconfigure locales
+#  shell: dpkg-reconfigure locales
 - name: Install required packages
   apt: name={{item}} state=present update_cache=no force=yes
   with_items:
     - mysql-server
-    - python-mysqldb
+    - python3-mysqldb
 - name: Create ddbb
   mysql_db: name={{ddbbname}} state=present
 - name: Create ddbb user
@@ -23,7 +23,7 @@
   mysql_db: state=import name={{ddbbname}} target=/tmp/Schema.sql
 - name: Load master data
   mysql_db: state=import name={{ddbbname}} target=/tmp/MasterData.sql
-#- name: Copy my.cnf file
-#  copy: src=my.cnf dest=/etc/mysql owner=root group=root mode=644
+- name: Copy my.cnf file
+  copy: src=mysqld.cnf dest=/etc/mysql/mysql.conf.d owner=root group=root mode=644
 - name: Restart mysql service
   service: name=mysql state=restarted
