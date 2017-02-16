@@ -14,3 +14,5 @@ sudo dpkg -i puppetlabs-release-pc1-${release}.deb
 sudo apt-get update
 sudo apt-get -y --allow-unauthenticated install puppet-agent
 export PATH=/opt/puppetlabs/bin/:$PATH
+
+puppet module install puppetlabs-apache

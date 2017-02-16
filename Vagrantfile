@@ -16,6 +16,8 @@ Vagrant.configure(2) do |config|
     vb.cpus = settings['vb_cpus']
   end
   config.vm.hostname = settings['host_name']
+  #Needed to avoid 'Inappropriate ioctl for device' error message
+  config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 
   #config.ssh.private_key_path = "~/.ssh/id_rsa"
   #config.ssh.forward_agent = true

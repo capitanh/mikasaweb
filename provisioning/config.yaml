@@ -1,5 +1,5 @@
 ---
-provisioning: ansible  # [puppet|ansible]
+provisioning: puppet  # [puppet|ansible]
 vb_name: mikasaweb
 vb_memory: 4096
 vb_cpus: 2
