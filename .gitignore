@@ -8,3 +8,4 @@
 /bin
 .vagrant
 ./ansible/.gradle/
+*.log
