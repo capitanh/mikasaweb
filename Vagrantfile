@@ -14,6 +14,8 @@ Vagrant.configure(2) do |config|
     vb.name = settings['vb_name']
     vb.memory = settings['vb_memory']
     vb.cpus = settings['vb_cpus']
+    vb.customize ["modifyvm", :id, "--cableconnected1", "on"]
+    vb.gui = false
   end
   config.vm.hostname = settings['host_name']
   #Needed to avoid 'Inappropriate ioctl for device' error message
@@ -32,7 +34,7 @@ Vagrant.configure(2) do |config|
   end
 
   if (provision == 'puppet')
-    #config.vm.provision "shell", path: "provisioning/bash/init.sh"
+    config.vm.provision "shell", path: "provisioning/bash/init.sh"
     config.vm.provision "puppet" do |puppet|
       puppet.options = "--verbose"
       #puppet.options = "--debug"
