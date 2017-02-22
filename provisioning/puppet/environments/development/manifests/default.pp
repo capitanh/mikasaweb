@@ -1,8 +1,18 @@
 # execute 'apt-get update'
-#exec { 'apt-update':                    # exec resource named 'apt-update'
-#  command => '/usr/bin/apt-get update'  # command this resource will run
-#}
+exec { 'apt-update':
+  command => '/usr/bin/apt-get update'
+}
 
-#include mongodb
-include openldap
+package { "openldap":
+    ensure => present,
+    require => Exec["apt-get update"]
+}
+
+
+#class { 'openldap::server': 
+#}
+#
+#openldap::server::database { 'dc=mikasaweb,dc=golili.net':
+#  ensure => present,
+#}
 

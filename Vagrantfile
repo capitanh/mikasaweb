@@ -32,7 +32,7 @@ Vagrant.configure(2) do |config|
   end
 
   if (provision == 'puppet')
-    config.vm.provision "shell", path: "provisioning/bash/init.sh"
+    #config.vm.provision "shell", path: "provisioning/bash/init.sh"
     config.vm.provision "puppet" do |puppet|
       puppet.options = "--verbose"
       #puppet.options = "--debug"

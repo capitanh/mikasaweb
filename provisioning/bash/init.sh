@@ -15,4 +15,5 @@ sudo apt-get update
 sudo apt-get -y --allow-unauthenticated install puppet-agent
 export PATH=/opt/puppetlabs/bin/:$PATH
 
-puppet module install puppetlabs-apache
+#puppet module install puppetlabs-apache
+puppet module install camptocamp-openldap --version 1.15.0
