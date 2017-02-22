@@ -14,6 +14,8 @@ class { 'openldap::server':
 
 openldap::server::database { 'dc=mikasaweb,dc=golili,dc=net':
   ensure => present,
+  rootdn => 'cn=admin,dc=golili,dc=net',
+  rootpw => 'secret',  
 }
 
 contain openldap::server

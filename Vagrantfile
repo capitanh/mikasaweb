@@ -39,7 +39,7 @@ Vagrant.configure(2) do |config|
       puppet.options = "--verbose"
       #puppet.options = "--debug"
       puppet.environment_path = "provisioning/puppet/environments"
-      puppet.environment = "development"
+      puppet.environment = "production"
     end
   end
 end
