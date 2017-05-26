@@ -12,13 +12,10 @@
 class { 'openldap::server': 
 }
 
-<<<<<<< HEAD
-include mongodb
-#include openldap
-=======
 openldap::server::database { 'dc=mikasaweb,dc=golili,dc=net':
   ensure => present,
+  rootdn => 'cn=admin,dc=golili,dc=net',
+  rootpw => 'secret',  
 }
->>>>>>> db59d3bddb55c75b4c0f106a08e6d274766ed7f3
 
 contain openldap::server
