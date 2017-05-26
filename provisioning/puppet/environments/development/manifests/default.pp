@@ -3,6 +3,6 @@
 #  command => '/usr/bin/apt-get update'  # command this resource will run
 #}
 
-#include mongodb
-include openldap
+include mongodb
+#include openldap
 

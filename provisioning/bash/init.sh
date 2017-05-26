@@ -16,3 +16,4 @@ sudo apt-get -y --allow-unauthenticated install puppet-agent
 export PATH=/opt/puppetlabs/bin/:$PATH
 
 puppet module install puppetlabs-apache
+puppet module install puppetlabs-mongodb

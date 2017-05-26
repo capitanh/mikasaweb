@@ -10,6 +10,7 @@ ENV["LANG"] = settings['locale_lang']
 Vagrant.configure(2) do |config|
   config.vm.box = settings['box_name']
   config.vm.network "forwarded_port", guest: 3306, host: 13306
+  config.vm.network "forwarded_port", guest: 27017, host: 27017
   config.vm.provider "virtualbox" do |vb|
     vb.name = settings['vb_name']
     vb.memory = settings['vb_memory']
