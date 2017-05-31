@@ -10,9 +10,14 @@ ports = settings['ports']
 
 Vagrant.configure(2) do |config|
   config.vm.box = settings['box_name']
+<<<<<<< HEAD
   ports.each do |forwarded_port|
     config.vm.network "forwarded_port", guest: forwarded_port['guestPort'], host: forwarded_port['hostPort']
   end
+=======
+  config.vm.network "forwarded_port", guest: 3306, host: 13306
+  config.vm.network "forwarded_port", guest: 27017, host: 27017
+>>>>>>> 1041088381459d4ad33915e5634b1e1b973a9610
   config.vm.provider "virtualbox" do |vb|
     vb.name = settings['vb_name']
     vb.memory = settings['vb_memory']
