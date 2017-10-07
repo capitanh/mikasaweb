@@ -63,10 +63,10 @@ dependencies {
   testCompile 'com.h2database:h2:1.4.182'
   //Needed to avoid compile errors in eclipse
   testCompile 'org.seleniumhq.selenium:selenium-java:2.44.0'
-  
+
 	integrationCompile 'junit:junit:4.11'
 	integrationCompile 'org.seleniumhq.selenium:selenium-java:2.44.0'
-  
+
   compile 'com.jcabi:jcabi-manifests:1.1'
   compile 'org.webjars:bootstrap:3.3.0'
 	compile 'org.springframework.boot:spring-boot-starter-web'
@@ -82,7 +82,8 @@ dependencies {
 *   nexusPassword: Nexus deployer password
 *   nexusSnapshotsURL: Nexus Snapshots repo URL
 *   nexusReleasesURL: Nexus Releases repo URL
-* Usage: gradle publishSnapshotPublicationToNexusSnapshotsRepository
+* Usage: gradle publishSnapshotPublicationToNexusSnapshotsRepository (snapshots)
+*        gradle publishReleasePublicationToNexusReleasesRepository (releases)
 */
 publishing {
   def nexusUser = System.getenv('nexusUser')
@@ -115,6 +116,6 @@ publishing {
     release(MavenPublication) {
       from components.web
       ext.repo = 'NexusReleases'
-    }    
+    }
   }
 }
