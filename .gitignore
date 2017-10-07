@@ -9,3 +9,5 @@
 .vagrant
 ./ansible/.gradle/
 *.log
+*-project
+*-workspace
