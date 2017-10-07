@@ -8,3 +8,7 @@
 /bin
 .vagrant
 ./ansible/.gradle/
+*.log
+*-project
+*-workspace
+*.retry

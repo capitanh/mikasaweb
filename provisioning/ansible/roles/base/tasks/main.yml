@@ -1,29 +1,63 @@
 ---
-- name: Set hostname
-  hostname: name={{hostname}}
-- name: Generate locale
-  locale_gen: name=en_US.UTF-8 state=present
-- name: Reconfigure locales
-  shell: dpkg-reconfigure locales
+#- name: Set hostname
+#  hostname: name={{hostname}}
+#- name: Generate locale
+#  locale_gen: name=en_US.UTF-8 state=present
+#- name: Reconfigure locales
+#  shell: dpkg-reconfigure locales
 - name: Install required packages
-  apt: name={{item}} state=present update_cache=no force=yes
+  apt:
+    name: "{{item}}"
+    state: present
+    #update_cache: no
+    #force: yes
   with_items:
     - mysql-server
-    - python-mysqldb
+    - python3-mysqldb
+
 - name: Create ddbb
-  mysql_db: name={{ddbbname}} state=present
+  mysql_db:
+    name: "{{ddbbname}}"
+    state: present
+
 - name: Create ddbb user
-  mysql_user: name={{ddbbuser}} password={{ddbbpassword}} priv={{ddbbname}}.*:ALL state=present host=%
+  mysql_user:
+    name: "{{ddbbuser}}"
+    password: "{{ddbbpassword}}"
+    priv: "{{ddbbname}}.*:ALL"
+    state: present
+    host: '%'
+
 - name: Copy schema file
-  copy: src={{filespath}}/{{item}} dest=/tmp
+  copy:
+    src: "{{filespath}}/{{item}}"
+    dest: /tmp
   with_items:
     - Schema.sql
     - MasterData.sql
+
 - name: Create ddbb schema
-  mysql_db: state=import name={{ddbbname}} target=/tmp/Schema.sql
+  mysql_db:
+    state: import
+    name: "{{ddbbname}}"
+    target: /tmp/Schema.sql
+
 - name: Load master data
-  mysql_db: state=import name={{ddbbname}} target=/tmp/MasterData.sql
+  mysql_db:
+    state: import
+    name: "{{ddbbname}}"
+    target: /tmp/MasterData.sql
+
 - name: Copy my.cnf file
-  copy: src=my.cnf dest=/etc/mysql owner=root group=root mode=644
+  copy:
+    src: mysqld.cnf
+    dest: /etc/mysql/mysql.conf.d
+    owner: root
+    group: root
+    mode: 644
+
 - name: Restart mysql service
-  service: name=mysql state=restarted
+  service:
+    name: mysql
+    state: restarted
+
