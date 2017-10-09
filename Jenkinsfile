@@ -4,7 +4,7 @@ node{
 		gradle = tool 'Gradle 4.2'
 	}
 	stage('Clean'){
-		step{
+		steps{
 			gradle 'clean'
 		}
 	}
