@@ -4,10 +4,11 @@ def gradle(command) {
 
 pipeline{
 	agent any
+
 	stages{
 	  stage ('Clean'){
 		  steps{
-		  	gradle clean
+		  	gradle 'clean'
 			}
 		}
 	}
