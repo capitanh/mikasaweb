@@ -1,6 +1,7 @@
 node{
-	def gradle(command) {
-		sh "${tool name: 'Gradle 4.2', type: 'hudson.plugins.gradle.GradleInstallation'}/usr/lib/gradle-4.2/bin/gradle ${command}"
+	def gradle
+	stage('Prepare'){
+		gradle = tool 'Gradle 4.2'
 	}
 	stage('Clean'){
 		gradle clean
