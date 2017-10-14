@@ -8,8 +8,9 @@ box_name: bento/ubuntu-16.04
 host_name: mikasaweb.golili.net
 locale_lc_all: en_US.UTF-8
 locale_lang: en_US.UTF-8
-ports: 
+roles_path:     ~/.ansible/roles
+ports:
 - guestPort: 3306
   hostPort: 13306
 - guestPort: 27017
-  hostPort: 27017 
+  hostPort: 27017

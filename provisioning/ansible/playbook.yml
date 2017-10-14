@@ -5,5 +5,25 @@
     DEBIAN_FRONTEND: noninteractive
     LANGUAGE: en_US.UTF-8
     LC_ALL: en_US.UTF-8
+
   roles:
-  - base
+  - mysql
+  - oraclejdk
+
+  tasks:
+  - name: Copy schema file
+    copy:
+      src: "{{item}}"
+      dest: /tmp
+    with_items:
+      - Schema.sql
+      - MasterData.sql
+
+  - name: Create ddbb schema and load data
+    mysql_db:
+      state: import
+      name: "{{ddbbname}}"
+      target: "/tmp/{{item}}"
+    with_items:
+      - Schema.sql
+      - MasterData.sql

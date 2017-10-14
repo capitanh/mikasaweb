@@ -19,3 +19,10 @@ ddbb_path: /var/lib/ldap/golili
 base_dn: dc=golili,dc=net
 ldap_host: localhost
 ldap_port: 389
+
+jdk_basedir:          /usr/lib/java   # JDK Install dir
+jdk_version:          jdk1.8.0_131
+
+jboss_home:           /opt            # JBoss install dir
+http_port:            8090            # JBoss port for http connections
+https_port:           8443            # JBoss port for https connections

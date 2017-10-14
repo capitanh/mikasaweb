@@ -28,6 +28,8 @@ Vagrant.configure(2) do |config|
   if (provision == 'ansible')
     config.vm.provision "ansible" do |ansible|
       ansible.playbook = "provisioning/ansible/playbook.yml"
+      ansible.galaxy_role_file = "provisioning/ansible/requirements.yml"
+      ansible.galaxy_roles_path = settings['roles_path']
     end
   end
 
