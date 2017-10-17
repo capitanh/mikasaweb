@@ -1,2 +1,3 @@
-- src: capitanh.oraclejdk-ansible-role
-  name: oraclejdk
+#- src: bennojoy.mysql
+#- src: capitanh.oraclejdk-ansible-role
+- src: capitanh.mysql-ansible-role

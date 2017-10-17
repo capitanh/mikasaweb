@@ -12,6 +12,18 @@ ddbbuser: mikasadb
 ddbbpassword: mikasadb
 
 #################################################
+# bennojoy galaxy mysql role
+mysql_root_db_pass: saupw
+mysql_repl_role: none
+#mysql_db:
+#- name: mikasadb
+#  replicate: no
+#mysql_users:
+#- name: mikasadb
+#  pass: mikasadb
+#  priv: "*.*:ALL"
+
+#################################################
 # OpenLDAP Settings
 # admin_user: admin
 admin_password: secret
