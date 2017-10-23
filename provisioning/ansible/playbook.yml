@@ -7,7 +7,7 @@
     LC_ALL: en_US.UTF-8
 
   roles:
-  #- capitanh.oraclejdk-ansible-role
+  - capitanh.oraclejdk-ansible-role
   - capitanh.mysql-ansible-role
 
   tasks:
