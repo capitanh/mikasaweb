@@ -1,16 +1,20 @@
 ---
-provisioning: ansible  # [puppet|ansible]
-vb_name: mikasaweb
-vb_memory: 4096
-vb_cpus: 2
-#box_name: ubuntu/trusty64
-box_name: bento/ubuntu-16.04
-host_name: mikasaweb.golili.net
-locale_lc_all: en_US.UTF-8
-locale_lang: en_US.UTF-8
+provisioning:   ansible  # [puppet|ansible]
+vb_name:        mikasaweb
+vb_memory:      4096
+vb_cpus:        2
+box_name:       bento/ubuntu-16.04
+host_name:      mikasaweb.golili.net
+locale_lc_all:  en_US.UTF-8
+locale_lang:    en_US.UTF-8
 roles_path:     ~/.ansible/roles
 ports:
 - guestPort: 3306
   hostPort: 13306
 - guestPort: 27017
   hostPort: 27017
+- guestPort: 9990
+  hostPort: 9990
+- guestPort: 8080
+  hostPort: 8080
+

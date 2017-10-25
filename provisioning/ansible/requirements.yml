@@ -1,3 +1,4 @@
-#- src: bennojoy.mysql
-#- src: capitanh.oraclejdk-ansible-role
+- src: capitanh.oraclejdk-ansible-role
 - src: capitanh.mysql-ansible-role
+- src: capitanh.wildfly-ansible-role
+

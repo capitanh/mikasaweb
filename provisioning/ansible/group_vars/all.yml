@@ -38,3 +38,8 @@ jdk_version:          jdk1.8.0_131
 jboss_home:           /opt            # JBoss install dir
 http_port:            8090            # JBoss port for http connections
 https_port:           8443            # JBoss port for https connections
+
+wildfly_user:         wildfly
+wildfly_basedir:      /opt
+wildfly_home:         /opt/wildfly
+wildfly_version:      10.1.0.Final

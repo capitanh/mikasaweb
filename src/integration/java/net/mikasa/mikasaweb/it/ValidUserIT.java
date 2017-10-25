@@ -16,7 +16,7 @@ public class ValidUserIT {
   public void setUp() throws Exception {
     //driver = new FirefoxDriver();
     driver = new HtmlUnitDriver();
-    baseUrl = "http://localhost:8080/mikasaweb";
+    baseUrl = "http://localhost:8888/mikasaweb";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
@@ -29,7 +29,7 @@ public class ValidUserIT {
     driver.findElement(By.id("password")).sendKeys("admin");
     driver.findElement(By.id("login")).click();
     assertTrue(driver.getPageSource().contains("mikasa.net 4.0 beta. Welcome"));
-    
+
   }
 
   @After

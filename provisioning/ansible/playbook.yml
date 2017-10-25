@@ -9,8 +9,11 @@
   roles:
   - capitanh.oraclejdk-ansible-role
   - capitanh.mysql-ansible-role
+  - capitanh.wildfly-ansible-role
 
   tasks:
+  #####################################################################################################
+  # Mysql
   - name: Create ddbb
     mysql_db:
       name: "{{ddbbname}}"
@@ -40,3 +43,37 @@
     with_items:
       - Schema.sql
       - MasterData.sql
+
+  #####################################################################################################
+  # Wikdfly
+  - name: Overwrite standalone config
+    copy:
+      src: standalone.xml
+      dest: "{{wildfly_home}}/standalone/configuration"
+      owner: "{{wildfly_user}}"
+      group: "{{wildfly_user}}"
+      mode: 0644
+
+  - name: Create mysql module dir
+    file:
+      path: "{{wildfly_home}}/modules/system/layers/base/com/mysql/driver/main"
+      state: directory
+      owner: "{{wildfly_user}}"
+      group: "{{wildfly_user}}"
+
+  - name: Download mysql jdbc driver
+    unarchive:
+      src: https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.44.tar.gz
+      extra_opts: [mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar,--strip-components=1]
+      dest: "{{wildfly_home}}/modules/system/layers/base/com/mysql/driver/main"
+      remote_src: yes
+      force: no
+      creates: "{{wildfly_home}}/modules/system/layers/base/com/mysql/driver/main/mysql-connector-java-5.1.44.tar.gz"
+
+  - name: Register mysql jdbc driver
+    copy:
+      src: module.xml
+      dest: "{{wildfly_home}}/modules/system/layers/base/com/mysql/driver/main"
+      owner: "{{wildfly_user}}"
+      group: "{{wildfly_user}}"
+      mode: 0644
