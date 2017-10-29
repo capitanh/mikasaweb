@@ -14,6 +14,11 @@
   tasks:
   #####################################################################################################
   # Mysql
+  - name: Delete ddbb if exists
+    mysql_db:
+      name: "{{ddbbname}}"
+      state: absent
+
   - name: Create ddbb
     mysql_db:
       name: "{{ddbbname}}"

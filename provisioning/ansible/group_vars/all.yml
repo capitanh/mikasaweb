@@ -43,3 +43,5 @@ wildfly_user:         wildfly
 wildfly_basedir:      /opt
 wildfly_home:         /opt/wildfly
 wildfly_version:      10.1.0.Final
+wildfly_admin:        admin         # Management console admin user
+wildfly_password:     admin         # Management console admin password

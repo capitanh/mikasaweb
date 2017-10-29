@@ -14,18 +14,18 @@ import com.jcabi.manifests.Manifests;
 public class HomeController
 {
 	private static Logger log = LoggerFactory.getLogger(HomeController.class);
-	
+
 	@Autowired
 	private UserBean userBean;
-	
+
 	@RequestMapping("/")
-	public String showHomePage(Model model) 
+	public String showHomePage(Model model)
 	{
-		/*String currentUser = userBean.getUser().getUsername();
+		String currentUser = userBean.getUser().getUsername();
 		String appVersion = Manifests.read("Implementation-Version");
 		log.info(currentUser);
 		model.addAttribute("user",currentUser);
-		model.addAttribute("appVersion",appVersion);*/
+		model.addAttribute("appVersion",appVersion);
 		return "index";
 	}
 

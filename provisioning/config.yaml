@@ -17,4 +17,6 @@ ports:
   hostPort: 9990
 - guestPort: 8080
   hostPort: 8080
+- guestPort: 8443
+  hostPort: 8443
 
