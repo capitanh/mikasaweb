@@ -12,13 +12,14 @@ Vagrant.configure(2) do |config|
   config.vm.box = settings['box_name']
   ports.each do |forwarded_port|
     config.vm.network "forwarded_port", guest: forwarded_port['guestPort'], host: forwarded_port['hostPort']
-    config.vm.network "private_network", type: "dhcp"
+    #config.vm.network "private_network", type: "dhcp"
+    config.vm.network "private_network", ip: "10.0.2.16"
   end
   config.vm.provider "virtualbox" do |vb|
     vb.name = settings['vb_name']
     vb.memory = settings['vb_memory']
     vb.cpus = settings['vb_cpus']
-    vb.customize ["modifyvm", :id, "--cableconnected1", "on"]
+    #vb.customize ["modifyvm", :id, "--cableconnected1", "on"]
     vb.gui = false
   end
   config.vm.hostname = settings['host_name']

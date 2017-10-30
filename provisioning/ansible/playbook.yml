@@ -1,6 +1,5 @@
 ---
 - hosts: all
-  become: yes
   environment:
     DEBIAN_FRONTEND: noninteractive
     LANGUAGE: en_US.UTF-8
@@ -12,73 +11,7 @@
   - capitanh.wildfly-ansible-role
 
   tasks:
-  #####################################################################################################
-  # Mysql
-  - name: Delete ddbb if exists
-    mysql_db:
-      name: "{{ddbbname}}"
-      state: absent
-
-  - name: Create ddbb
-    mysql_db:
-      name: "{{ddbbname}}"
-      state: present
-
-  - name: Create ddbb user
-    mysql_user:
-      name: "{{ddbbuser}}"
-      password: "{{ddbbpassword}}"
-      priv: '*.*:ALL'
-      state: present
-      host: '%'
-
-  - name: Copy schema file
-    copy:
-      src: "{{item}}"
-      dest: /tmp
-    with_items:
-      - Schema.sql
-      - MasterData.sql
-
-  - name: Create ddbb schema and load data
-    mysql_db:
-      state: import
-      name: "{{ddbbname}}"
-      target: "/tmp/{{item}}"
-    with_items:
-      - Schema.sql
-      - MasterData.sql
-
-  #####################################################################################################
-  # Wikdfly
-  - name: Overwrite standalone config
-    copy:
-      src: standalone.xml
-      dest: "{{wildfly_home}}/standalone/configuration"
-      owner: "{{wildfly_user}}"
-      group: "{{wildfly_user}}"
-      mode: 0644
-
-  - name: Create mysql module dir
-    file:
-      path: "{{wildfly_home}}/modules/system/layers/base/com/mysql/driver/main"
-      state: directory
-      owner: "{{wildfly_user}}"
-      group: "{{wildfly_user}}"
-
-  - name: Download mysql jdbc driver
-    unarchive:
-      src: https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.44.tar.gz
-      extra_opts: [mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar,--strip-components=1]
-      dest: "{{wildfly_home}}/modules/system/layers/base/com/mysql/driver/main"
-      remote_src: yes
-      force: no
-      creates: "{{wildfly_home}}/modules/system/layers/base/com/mysql/driver/main/mysql-connector-java-5.1.44.tar.gz"
-
-  - name: Register mysql jdbc driver
-    copy:
-      src: module.xml
-      dest: "{{wildfly_home}}/modules/system/layers/base/com/mysql/driver/main"
-      owner: "{{wildfly_user}}"
-      group: "{{wildfly_user}}"
-      mode: 0644
+  - include_tasks: mysql.yml
+  - include_tasks: wildfly.yml
+  - include_tasks: go-agent.yml
+  - include_tasks: gradle.yml

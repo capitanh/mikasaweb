@@ -1,0 +1,23 @@
+---
+- name: Download and uncompress archive
+  unarchive:
+    src: "https://services.gradle.org/distributions/gradle-{{gradle_version}}-bin.zip"
+    dest: "{{dev_tools_dir}}"
+    remote_src: yes
+    creates: "{{dev_tools_dir}}/gradle-{{gradle_version}}"
+
+- name: Set environment variables
+  template:
+    src: gradle.sh
+    dest: /etc/profile.d
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Copy init script to GRADLE_HOME
+  template:
+    src: init.gradle
+    dest: "{{dev_tools_dir}}/gradle-{{gradle_version}}/init.d/"
+    owner: root
+    group: root
+    mode: 0755
