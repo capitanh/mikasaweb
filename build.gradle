@@ -1,127 +1,27 @@
-
-buildscript {
-  repositories {
-    jcenter()
-  }
-  dependencies {
-    classpath 'org.akhikhl.gretty:gretty:1.1.4'
-  }
+plugins {
+  id 'org.springframework.boot' version '1.5.8.RELEASE'
+  id 'java'
+  id 'eclipse'
 }
 
 repositories {
-  mavenLocal()
-  mavenCentral()
   jcenter()
-}
-
-apply plugin: 'java'
-apply plugin: 'war'
-apply plugin: 'eclipse-wtp'
-apply plugin: 'org.akhikhl.gretty'
-apply plugin: 'maven-publish'
-
-sourceSets{
-	integration
-}
-
-task integrationTest(type: Test){
-	testClassesDir = sourceSets.integration.output.classesDir
-	classpath = sourceSets.integration.runtimeClasspath
-}
-
-task testReport(type: TestReport){
-	destinationDir = new File("build/reports/tests")
-	reportOn(test,integrationTest)
-}
-
-war {
-  manifest{
-    attributes(
-      "Implementation-Title": project.description,
-      "Implementation-Version": version,
-      "Build-date": new Date().format('dd-MM-yyyy HH:mm:ss'),
-      "Build-by": System.properties.'user.name',
-      "git-revision": "git rev-parse --short HEAD".execute().text.trim(),
-      "git-branch": "git status -bs -u no".execute().text.trim()
-    )
-  }
-}
-
-gretty {
-  contextPath = '/mikasaweb'
-  servletContainer = 'jetty9'
-  serverConfigFile = 'src/integration/resources/jetty.xml'
-  springBoot = true
+  //mavenCentral()
 }
 
 dependencies {
-	gretty 'mysql:mysql-connector-java:5.0.5'
 
   testCompile 'org.springframework.boot:spring-boot-starter-test'
   testCompile 'org.dbunit:dbunit:2.5.0'
-  testCompile 'com.github.springtestdbunit:spring-test-dbunit:1.1.0'
+  testCompile 'com.github.springtestdbunit:spring-test-dbunit:1.3.0'
   testCompile 'com.h2database:h2:1.4.182'
   //Needed to avoid compile errors in eclipse
   testCompile 'org.seleniumhq.selenium:selenium-java:2.44.0'
 
-	integrationCompile 'junit:junit:4.11'
-	integrationCompile 'org.seleniumhq.selenium:selenium-java:2.44.0'
-
-  compile 'com.jcabi:jcabi-manifests:1.1'
   compile 'org.webjars:bootstrap:3.3.0'
+  compile 'org.springframework.boot:spring-boot-devtools'
   compile 'org.springframework.boot:spring-boot-starter-web'
   compile 'org.springframework.boot:spring-boot-starter-security'
   compile 'org.springframework.boot:spring-boot-starter-data-jpa'
   compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
-  //compile 'org.thymeleaf.extras:thymeleaf-extras-springsecurity4'
-  
-  //compile project(':spring-security-config')
-  //compile project(':spring-security-web')
-  
-  
-}
-
-/*
-* Nexus Publishing Info
-* Define following environment variables (local or inside jenkins config):
-*   nexusUser: Nexus deployer username
-*   nexusPassword: Nexus deployer password
-*   nexusSnapshotsURL: Nexus Snapshots repo URL
-*   nexusReleasesURL: Nexus Releases repo URL
-* Usage: gradle publishSnapshotPublicationToNexusSnapshotsRepository (snapshots)
-*        gradle publishReleasePublicationToNexusReleasesRepository (releases)
-*/
-publishing {
-  def nexusUser = System.getenv('nexusUser')
-  def nexusPassword = System.getenv('nexusPassword')
-  def artifact = rootProject.name
-  repositories {
-    maven {
-      name 'NexusSnapshots'
-      url System.getenv('nexusSnapshotsURL')
-      credentials {
-        username nexusUser
-        password nexusPassword
-      }
-    }
-    maven {
-      name 'NexusReleases'
-      url System.getenv('nexusReleasesURL')
-      credentials {
-        username nexusUser
-        password nexusPassword
-      }
-    }
-  }
-  publications {
-    snapshot(MavenPublication) {
-      artifactId artifact
-      from components.web
-      ext.repo = 'NexusSnapshots'
-    }
-    release(MavenPublication) {
-      from components.web
-      ext.repo = 'NexusReleases'
-    }
-  }
 }

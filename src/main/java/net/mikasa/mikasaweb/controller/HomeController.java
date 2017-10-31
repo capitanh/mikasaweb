@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.jcabi.manifests.Manifests;
 
 @Controller
 public class HomeController
@@ -22,10 +21,10 @@ public class HomeController
 	public String showHomePage(Model model)
 	{
 		String currentUser = userBean.getUser().getUsername();
-		String appVersion = Manifests.read("Implementation-Version");
+		//String appVersion = Manifests.read("Implementation-Version");
 		log.info(currentUser);
 		model.addAttribute("user",currentUser);
-		model.addAttribute("appVersion",appVersion);
+		//model.addAttribute("appVersion",appVersion);
 		return "index";
 	}
 
