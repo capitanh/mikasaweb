@@ -42,8 +42,7 @@ public class User  implements java.io.Serializable {
        this.authorities = authorities;
     }
    
-     @Id 
-    
+    @Id 
     @Column(name="username", unique=true, nullable=false, length=10)
     public String getUsername() {
         return this.username;

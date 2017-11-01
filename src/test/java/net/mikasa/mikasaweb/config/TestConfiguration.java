@@ -20,37 +20,35 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class TestConfiguration {
 	
 	@Bean
-    public DataSource dataSource() {
+  public DataSource dataSource() {
 		return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
-    }
+	}
 	
 	@Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-        entityManagerFactoryBean.setDataSource(dataSource());
-        entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        entityManagerFactoryBean.setPackagesToScan("net.mikasa.mikasaweb.model");
-        entityManagerFactoryBean.setJpaProperties(jpaProperties());
-        return entityManagerFactoryBean;
-    }
+  public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+    entityManagerFactoryBean.setDataSource(dataSource());
+    entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+    entityManagerFactoryBean.setPackagesToScan("net.mikasa.mikasaweb.model");
+    entityManagerFactoryBean.setJpaProperties(jpaProperties());
+    return entityManagerFactoryBean;
+  }
 	
 	private Properties jpaProperties() {
-        Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto","create");
-        properties.setProperty("hibernate.dialect","org.hibernate.dialect.H2Dialect");
-        properties.setProperty("hibernate.show_sql","true");
-        properties.setProperty("hibernate.format_sql","false");
-        return properties;
-    }
+		Properties properties = new Properties();
+		properties.setProperty("hibernate.hbm2ddl.auto","create");
+		properties.setProperty("hibernate.dialect","org.hibernate.dialect.H2Dialect");
+		properties.setProperty("hibernate.show_sql","true");
+		properties.setProperty("hibernate.format_sql","false");
+		return properties;
+  }
 	
 	@Bean
-    public JpaTransactionManager transactionManager() {
-        JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
-        transactionManager.setDataSource(dataSource());
-        return transactionManager;
-    }	
-	
-
-    
+  public JpaTransactionManager transactionManager() {
+    JpaTransactionManager transactionManager = new JpaTransactionManager();
+    transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
+    transactionManager.setDataSource(dataSource());
+    return transactionManager;
+  }	
+   
 }
