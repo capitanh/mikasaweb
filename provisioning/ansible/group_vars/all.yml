@@ -1,9 +1,6 @@
 #################################################
 # General Settings
 ansible_python_interpreter: /usr/bin/python3
-#hostname: mikasaweb.golili.net
-#remote_user: ubuntu
-filespath: ../../src/main/db
 
 #################################################
 # Mysql Settings
@@ -15,30 +12,15 @@ ddbbpassword: mikasadb
 # bennojoy galaxy mysql role
 mysql_root_db_pass: saupw
 mysql_repl_role: none
-#mysql_db:
-#- name: mikasadb
-#  replicate: no
-#mysql_users:
-#- name: mikasadb
-#  pass: mikasadb
-#  priv: "*.*:ALL"
 
-#################################################
-# OpenLDAP Settings
-# admin_user: admin
-admin_password: secret
-ddbb_path: /var/lib/ldap/golili
-base_dn: dc=golili,dc=net
-ldap_host: localhost
-ldap_port: 389
 
 jdk_basedir:          /usr/lib/java   # JDK Install dir
 jdk_version:          jdk1.8.0_131
 
-jboss_home:           /opt            # JBoss install dir
+#################################################
+# Wildfly Settings
 http_port:            8090            # JBoss port for http connections
 https_port:           8443            # JBoss port for https connections
-
 wildfly_user:         wildfly
 wildfly_basedir:      /opt
 wildfly_home:         /opt/wildfly
@@ -48,3 +30,44 @@ wildfly_password:     admin         # Management console admin password
 
 dev_tools_dir:        /usr/lib
 gradle_version:       4.2
+
+#################################################
+# OpenLDAP Settings
+ldap_username:        admin
+ldap_password:        secret
+ldap_basedn:          dc=golili,dc=net
+ldap_users:
+  admin:
+    cn: System Administrator
+    givenname: System
+    sn: Administrator
+    mail: admin@golili.net
+    userpassword: admin
+  lnovo:
+    cn: Luis Novo
+    givenname: Luis
+    sn: Novo
+    mail: lnovo@golili.net
+    userpassword: alibaba
+  erodrigyez:
+    cn: Elena Rodriguez
+    givenname: Elena
+    sn: Rodriguez
+    mail: erodriguez@golili.net
+    userpassword: alibaba
+  aperez:
+    cn: Alberto Perez
+    givenname: Alberto
+    sn: Perez
+    mail: aperez@golili.net
+    userpassword: alibaba
+
+ldap_groups:
+  - name: administrators
+    members:
+      - admin
+  - name: developers
+    members:
+      - lnovo
+      - erodriguez
+      - aperez

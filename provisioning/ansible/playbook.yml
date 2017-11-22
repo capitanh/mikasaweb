@@ -13,5 +13,4 @@
   tasks:
   - include_tasks: mysql.yml
   - include_tasks: wildfly.yml
-  - include_tasks: go-agent.yml
   - include_tasks: gradle.yml
