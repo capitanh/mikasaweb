@@ -74,11 +74,11 @@ dependencies {
   compile 'org.springframework.boot:spring-boot-starter-data-jpa'
   compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
   //compile 'org.thymeleaf.extras:thymeleaf-extras-springsecurity4'
-  
+
   //compile project(':spring-security-config')
   //compile project(':spring-security-web')
-  
-  
+
+
 }
 
 /*
@@ -120,6 +120,7 @@ publishing {
       ext.repo = 'NexusSnapshots'
     }
     release(MavenPublication) {
+      artifactId artifact
       from components.web
       ext.repo = 'NexusReleases'
     }
