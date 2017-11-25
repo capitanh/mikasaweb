@@ -39,8 +39,7 @@ public class ValidUserIT {
   @Test
   public void testValidUser() throws Exception {
     driver.get(baseUrl + "/login");
-    WebElement element = driver.findElement(By.id("username"));
-    element.sendKeys("admin");
+    driver.findElement(By.id("username")).sendKeys("admin");
     driver.findElement(By.id("password")).sendKeys("admin");
     driver.findElement(By.id("login")).click();
     assertTrue(driver.getPageSource().contains("mikasa.net 4.0 beta. Welcome"));
