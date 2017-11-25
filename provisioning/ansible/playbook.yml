@@ -6,11 +6,7 @@
     LC_ALL: en_US.UTF-8
 
   roles:
-  - capitanh.oraclejdk-ansible-role
-  - capitanh.mysql-ansible-role
-  - capitanh.wildfly-ansible-role
+    - capitanh.mysql-ansible-role
 
   tasks:
   - include_tasks: mysql.yml
-  - include_tasks: wildfly.yml
-  - include_tasks: gradle.yml
