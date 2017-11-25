@@ -24,14 +24,8 @@ dependencies {
 
   testCompile 'org.springframework.boot:spring-boot-starter-test'
   testCompile 'com.h2database:h2:1.4.182'
-  //Needed to avoid compile errors in eclipse
-  testCompile 'org.seleniumhq.selenium:selenium-java:3.7.1'
-  testCompile 'org.seleniumhq.selenium:selenium-api:3.7.1'
-  testCompile 'org.seleniumhq.selenium:htmlunit-driver:2.24'
-
-  //compile 'org.seleniumhq.selenium:selenium-java:2.53.0'
-  //compile 'org.seleniumhq.selenium:htmlunit-driver:2.28.1'
-
+  testCompile 'org.seleniumhq.selenium:selenium-server:3.7.1'
+  
   compile 'org.webjars:bootstrap:3.3.0'
   compile 'mysql:mysql-connector-java:5.0.5'
   compile 'org.apache.tomcat:dbcp:6.0.53'
