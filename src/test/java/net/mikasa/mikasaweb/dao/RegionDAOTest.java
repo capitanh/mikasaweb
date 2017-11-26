@@ -18,7 +18,7 @@ public class RegionDAOTest extends GenericTest {
   @Test
   public void testFindAll() {
     List<Region>regions = regionDAO.findAll();
-    assertTrue(regions.size()==19);
+    assertTrue(regions.size()==5);
     
   }
 

@@ -69,7 +69,8 @@ public class User implements java.io.Serializable {
     public void setEnabled(BigDecimal enabled) {
         this.enabled = enabled;
     }
-@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="user")
+    
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="user")
     public Set<Authority> getAuthorities() {
         return this.authorities;
     }

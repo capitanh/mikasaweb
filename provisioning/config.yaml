@@ -11,8 +11,6 @@ roles_path:     ~/.ansible/roles
 ports:
 - guestPort: 3306
   hostPort: 13306
-- guestPort: 27017
-  hostPort: 27017
 - guestPort: 9990
   hostPort: 9990
 - guestPort: 8080
