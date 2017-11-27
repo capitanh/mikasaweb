@@ -1,4 +1,4 @@
-package net.mikasa.mikasaweb;
+package net.mikasa.mikasaweb.config;
 
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
