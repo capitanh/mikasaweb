@@ -1,4 +1,4 @@
-package net.mikasa.mikasaweb.config;
+package net.mikasa.mikasaweb;
 
 import java.util.Properties;
 
@@ -16,7 +16,8 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan(basePackages = "net.mikasa.mikasaweb")
+//@ComponentScan(basePackages = "net.mikasa.mikasaweb")
+//@ComponentScan
 @EnableJpaRepositories("net.mikasa.mikasaweb")
 @EnableTransactionManagement
 public class TestConfiguration {
