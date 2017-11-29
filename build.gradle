@@ -20,6 +20,7 @@ plugins {
   id 'eclipse-wtp'
   id 'org.springframework.boot' version '1.5.8.RELEASE'
   id 'war'
+  id 'maven-publish'
 }
 
 repositories {
