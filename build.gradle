@@ -8,12 +8,6 @@ buildscript {
   }
 }
 
-/*apply plugin: 'java'
-apply plugin: 'org.unbroken-dome.test-sets'
-apply plugin: 'eclipse-wtp'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'war'*/
-
 plugins {
   id 'java'
   id 'org.unbroken-dome.test-sets' version '1.4.2'
@@ -25,6 +19,19 @@ plugins {
 
 repositories {
   jcenter()
+}
+
+war {
+  manifest{
+    attributes(
+      "Implementation-Title": project.description,
+      "Implementation-Version": version,
+      "Build-date": new Date().format('dd-MM-yyyy HH:mm:ss'),
+      "Build-by": System.properties.'user.name',
+      "git-revision": "git rev-parse --short HEAD".execute().text.trim(),
+      "git-branch": "git status -bs -u no".execute().text.trim()
+    )
+  }
 }
 
 //Integration tests config
