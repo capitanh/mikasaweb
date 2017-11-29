@@ -6,5 +6,5 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TestConfiguration.class,webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public abstract class GenericTest {
+public abstract class ITGenericTest {
 }

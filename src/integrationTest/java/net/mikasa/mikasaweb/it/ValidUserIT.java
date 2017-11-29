@@ -5,11 +5,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.springframework.boot.context.embedded.LocalServerPort;
-import net.mikasa.mikasaweb.config.GenericTest;
+import net.mikasa.mikasaweb.config.ITGenericTest;
 
 import static org.junit.Assert.*;
 
-public class ValidUserIT extends GenericTest{
+public class ValidUserIT extends ITGenericTest{
   
   @LocalServerPort
   private int port;

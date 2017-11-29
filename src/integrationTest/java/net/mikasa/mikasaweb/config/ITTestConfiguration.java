@@ -20,7 +20,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan("net.mikasa.mikasaweb")
-public class TestConfiguration {
+public class ITTestConfiguration {
   
   @Bean
   public DataSource dataSource() {
