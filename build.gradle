@@ -21,6 +21,7 @@ repositories {
   jcenter()
 }
 
+//Manifest config
 war {
   manifest{
     attributes(
@@ -33,6 +34,7 @@ war {
     )
   }
 }
+
 
 //Integration tests config
 testSets {
@@ -70,10 +72,10 @@ dependencies {
   integrationTestCompile 'com.h2database:h2:1.4.182'
   integrationTestCompile 'org.seleniumhq.selenium:selenium-server:3.7.1'
 
+  compile 'org.springframework.boot:spring-boot-devtools'
   compile 'org.webjars:bootstrap:3.3.0'
   compile 'mysql:mysql-connector-java:5.0.5'
   compile 'org.apache.tomcat:dbcp:6.0.53'
-  compile 'org.springframework.boot:spring-boot-devtools'
   compile 'org.springframework.boot:spring-boot-starter-web'
   compile 'org.springframework.boot:spring-boot-starter-security'
   compile 'org.springframework.boot:spring-boot-starter-data-jpa'
