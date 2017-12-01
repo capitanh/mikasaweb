@@ -1,39 +1,27 @@
-
 buildscript {
   repositories {
     jcenter()
   }
   dependencies {
-    classpath 'org.akhikhl.gretty:gretty:1.1.4'
+    classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.8.RELEASE'
+    classpath 'org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:1.4.2'
   }
 }
 
+plugins {
+  id 'java'
+  id 'org.unbroken-dome.test-sets' version '1.4.2'
+  id 'eclipse-wtp'
+  id 'org.springframework.boot' version '1.5.8.RELEASE'
+  id 'war'
+  id 'maven-publish'
+}
+
 repositories {
-  mavenLocal()
-  mavenCentral()
   jcenter()
 }
 
-apply plugin: 'java'
-apply plugin: 'war'
-apply plugin: 'eclipse-wtp'
-apply plugin: 'org.akhikhl.gretty'
-apply plugin: 'maven-publish'
-
-sourceSets{
-	integration
-}
-
-task integrationTest(type: Test){
-	testClassesDir = sourceSets.integration.output.classesDir
-	classpath = sourceSets.integration.runtimeClasspath
-}
-
-task testReport(type: TestReport){
-	destinationDir = new File("build/reports/tests")
-	reportOn(test,integrationTest)
-}
-
+//Manifest config
 war {
   manifest{
     attributes(
@@ -47,38 +35,51 @@ war {
   }
 }
 
-gretty {
-  contextPath = '/mikasaweb'
-  servletContainer = 'jetty9'
-  serverConfigFile = 'src/integration/resources/jetty.xml'
-  springBoot = true
+
+//Integration tests config
+testSets {
+  integrationTest
+}
+check.dependsOn integrationTest
+integrationTest.mustRunAfter test
+tasks.withType(Test) {
+  reports.html.destination = file("${reporting.baseDir}/${name}")
+}
+project.integrationTest {
+  outputs.upToDateWhen { false }
+}
+tasks.withType(Test) {
+  reports.html.destination = file("${reporting.baseDir}/${name}")
+}
+test {
+  afterTest { desc, result ->
+    println "Executing test [${desc.className}].${desc.name} with result: ${result.resultType}"
+    }
+}
+integrationTest {
+  afterTest { desc, result ->
+    println "Executing test [${desc.className}].${desc.name} with result: ${result.resultType}"
+    }
 }
 
 dependencies {
-	gretty 'mysql:mysql-connector-java:5.0.5'
 
   testCompile 'org.springframework.boot:spring-boot-starter-test'
-  testCompile 'org.dbunit:dbunit:2.5.0'
-  testCompile 'com.github.springtestdbunit:spring-test-dbunit:1.1.0'
   testCompile 'com.h2database:h2:1.4.182'
-  //Needed to avoid compile errors in eclipse
-  testCompile 'org.seleniumhq.selenium:selenium-java:2.44.0'
+  testCompile 'org.seleniumhq.selenium:selenium-server:3.7.1'
 
-	integrationCompile 'junit:junit:4.11'
-	integrationCompile 'org.seleniumhq.selenium:selenium-java:2.44.0'
+  integrationTestCompile 'org.springframework.boot:spring-boot-starter-test'
+  integrationTestCompile 'com.h2database:h2:1.4.182'
+  integrationTestCompile 'org.seleniumhq.selenium:selenium-server:3.7.1'
 
-  compile 'com.jcabi:jcabi-manifests:1.1'
+  compile 'org.springframework.boot:spring-boot-devtools'
   compile 'org.webjars:bootstrap:3.3.0'
+  compile 'mysql:mysql-connector-java:5.0.5'
+  compile 'org.apache.tomcat:dbcp:6.0.53'
   compile 'org.springframework.boot:spring-boot-starter-web'
   compile 'org.springframework.boot:spring-boot-starter-security'
   compile 'org.springframework.boot:spring-boot-starter-data-jpa'
   compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
-  //compile 'org.thymeleaf.extras:thymeleaf-extras-springsecurity4'
-
-  //compile project(':spring-security-config')
-  //compile project(':spring-security-web')
-
-
 }
 
 /*

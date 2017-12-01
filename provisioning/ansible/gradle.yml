@@ -6,18 +6,11 @@
     remote_src: yes
     creates: "{{dev_tools_dir}}/gradle-{{gradle_version}}"
 
-- name: Set environment variables
-  template:
-    src: gradle.sh
-    dest: /etc/profile.d
-    owner: root
-    group: root
-    mode: 0644
-
-- name: Copy init script to GRADLE_HOME
-  template:
-    src: init.gradle
-    dest: "{{dev_tools_dir}}/gradle-{{gradle_version}}/init.d/"
+- name: Create symlink to gradle executable
+  file:
+    src: "{{dev_tools_dir}}/gradle-{{gradle_version}}/bin/gradle"
+    dest: /usr/bin/gradle
+    state: link
     owner: root
     group: root
     mode: 0755

@@ -18,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="users")
-public class User  implements java.io.Serializable {
+public class User implements java.io.Serializable {
 
 	private static final long serialVersionUID = -7865444145987849091L;
 	private String username;
@@ -42,8 +42,7 @@ public class User  implements java.io.Serializable {
        this.authorities = authorities;
     }
    
-     @Id 
-    
+    @Id 
     @Column(name="username", unique=true, nullable=false, length=10)
     public String getUsername() {
         return this.username;
@@ -70,7 +69,8 @@ public class User  implements java.io.Serializable {
     public void setEnabled(BigDecimal enabled) {
         this.enabled = enabled;
     }
-@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="user")
+    
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="user")
     public Set<Authority> getAuthorities() {
         return this.authorities;
     }

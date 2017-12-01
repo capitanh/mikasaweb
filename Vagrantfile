@@ -13,7 +13,7 @@ Vagrant.configure(2) do |config|
   ports.each do |forwarded_port|
     config.vm.network "forwarded_port", guest: forwarded_port['guestPort'], host: forwarded_port['hostPort']
     #config.vm.network "private_network", type: "dhcp"
-    config.vm.network "private_network", ip: "10.0.2.16"
+    #config.vm.network "private_network", ip: "10.0.2.16"
   end
   config.vm.provider "virtualbox" do |vb|
     vb.name = settings['vb_name']

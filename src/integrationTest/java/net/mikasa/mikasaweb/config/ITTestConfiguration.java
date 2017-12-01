@@ -4,10 +4,10 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
-//import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.startup.Tomcat;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-//import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer;
-//import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +20,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan("net.mikasa.mikasaweb")
-public class TestConfiguration {
+public class ITTestConfiguration {
   
   @Bean
   public DataSource dataSource() {
@@ -54,7 +54,6 @@ public class TestConfiguration {
     return transactionManager;
   }
   
-  /*
   @Bean
   public TomcatEmbeddedServletContainerFactory tomcatFactory() {
     return new TomcatEmbeddedServletContainerFactory() {
@@ -65,5 +64,5 @@ public class TestConfiguration {
         return super.getTomcatEmbeddedServletContainer(tomcat);
       }
     };
-  } */
+  }  
 }
