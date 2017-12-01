@@ -4,7 +4,6 @@ import net.mikasa.mikasaweb.bean.UserBean;
 import net.mikasa.mikasaweb.model.Region;
 import net.mikasa.mikasaweb.service.RegionService;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.slf4j.Logger;
