@@ -29,13 +29,11 @@ gradle_version:       4.2
 
 #################################################
 # OpenLDAP Settings
-ldap_auth:
-  server_uri: ldap://localhost:389
-  bind_dn: cn=admin,dc=golili,dc=net
-  bind_pw: secret
-ldap_username:        admin
-ldap_password:        secret
 ldap_basedn:          dc=golili,dc=net
+ldap_auth:            # LDAP Authetication config
+  server_uri:           ldap://localhost:389
+  bind_dn:              cn=admin,{{ldap_basedn}}
+  bind_pw:              secret
 ldap_users:
   admin:
     cn: System Administrator
