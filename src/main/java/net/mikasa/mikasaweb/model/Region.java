@@ -1,39 +1,35 @@
 package net.mikasa.mikasaweb.model;
 
-import java.math.BigDecimal;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name="regions")
-public class Region implements java.io.Serializable {
+@Document(collection = "regions")
+public class Region {
   
-  private static final long serialVersionUID = 7878378792402868513L;
-  private BigDecimal id;
+  @Id
+  private long id;
+  
+  @Indexed(unique = true)
   private String name;
   
   public Region() {
   }
 
-  public Region(BigDecimal id, String name) {
+  public Region(long id, String name) {
     super();
     this.id = id;
     this.name = name;
   }
 
-  @Id 
-  @Column(name="id", unique=true, nullable=false)
-  public BigDecimal getId() {
+  public long getId() {
     return id;
   }
 
-  public void setId(BigDecimal id) {
+  public void setId(long id) {
     this.id = id;
   }
 
-  @Column(name="name", nullable=false, length=30)
   public String getName() {
     return name;
   }

@@ -1,6 +1,6 @@
 package net.mikasa.mikasaweb.service;
 
-import java.math.BigDecimal;
+import java.lang.Integer;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class RegionService {
 
   public Region findById(int id)
   {
-    return regionDAO.findOne(new BigDecimal(id));
+    return regionDAO.findOne(new Integer(id));
   }
   
   public List<Region> findAll(){

@@ -1,21 +1,17 @@
 #################################################
 # General Settings
-ansible_python_interpreter: /usr/bin/python3
+#ansible_python_interpreter: /usr/bin/python3
 
 #################################################
-# Mysql Settings
-ddbbname: mikasadb
-ddbbuser: mikasadb
-ddbbpassword: mikasadb
+# Mongodb Settings
+mongo_user:           mongodb         # MongoDB username
+mongo_password:       mongodb         # MongoDB password
+mongo_db:             mikasadb        # MongoDB database name
+mongo_collections:
+  - users
+  - plans
+  - activities
 
-#################################################
-# bennojoy galaxy mysql role
-mysql_root_db_pass: saupw
-mysql_repl_role: none
-
-
-jdk_basedir:          /usr/lib/java   # JDK Install dir
-jdk_version:          jdk1.8.0_131
 
 #################################################
 # Wildfly Settings
@@ -33,6 +29,10 @@ gradle_version:       4.2
 
 #################################################
 # OpenLDAP Settings
+ldap_auth:
+  server_uri: ldap://localhost:389
+  bind_dn: cn=admin,dc=golili,dc=net
+  bind_pw: secret
 ldap_username:        admin
 ldap_password:        secret
 ldap_basedn:          dc=golili,dc=net
@@ -49,7 +49,7 @@ ldap_users:
     sn: Novo
     mail: lnovo@golili.net
     userpassword: alibaba
-  erodrigyez:
+  erodriguez:
     cn: Elena Rodriguez
     givenname: Elena
     sn: Rodriguez

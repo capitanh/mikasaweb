@@ -4,17 +4,13 @@ vb_name:        mikasaweb
 vb_memory:      4096
 vb_cpus:        2
 box_name:       bento/ubuntu-16.04
+#box_name:       centos/7
 host_name:      mikasaweb.golili.net
 locale_lc_all:  en_US.UTF-8
 locale_lang:    en_US.UTF-8
 roles_path:     ~/.ansible/roles
 ports:
-- guestPort: 3306
-  hostPort: 13306
-- guestPort: 9990
-  hostPort: 9990
-- guestPort: 8080
-  hostPort: 8080
-- guestPort: 8443
-  hostPort: 8443
-
+- guestPort: 27017
+  hostPort: 27017
+- guestPort: 389
+  hostPort: 10389

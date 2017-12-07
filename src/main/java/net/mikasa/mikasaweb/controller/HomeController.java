@@ -41,6 +41,7 @@ public class HomeController
 	{
 		//String appVersion = Manifests.read("Implementation-Version");
 		//model.addAttribute("appVersion",appVersion);
+		log.info("Loading home page");
 		return "index";
 	}
 

@@ -17,7 +17,7 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
-@Configuration
+//@Configuration
 @EnableAutoConfiguration
 @ComponentScan("net.mikasa.mikasaweb")
 public class TestConfiguration {

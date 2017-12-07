@@ -1,9 +1,11 @@
 package net.mikasa.mikasaweb.dao;
 
-import java.math.BigDecimal;
+import java.lang.Integer;
 import net.mikasa.mikasaweb.model.Region;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface RegionDAO extends JpaRepository<Region,BigDecimal> {
-
+public interface RegionDAO extends MongoRepository<Region,Integer> {
+  
+  //public Region findOne(Integer id);
+  //public List<Region>findAll();
 }
