@@ -1,69 +1,48 @@
 package net.mikasa.mikasaweb.config;
 
-import java.util.Properties;
+import java.io.IOException;
+import java.io.InputStream;
 
-import javax.sql.DataSource;
-
-//import org.apache.catalina.startup.Tomcat;
+import org.apache.commons.io.Charsets;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-//import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer;
-//import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
-import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.core.io.Resource;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.ScriptOperations;
+import org.springframework.data.mongodb.core.script.ExecutableMongoScript;
 
-//@Configuration
+@Configuration
 @EnableAutoConfiguration
 @ComponentScan("net.mikasa.mikasaweb")
 public class TestConfiguration {
+  private static Logger log = LoggerFactory.getLogger(TestConfiguration.class);
   
-  @Bean
-  public DataSource dataSource() {
-    return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
-  }
+  @Autowired
+  private ApplicationContext ctx;
   
-  @Bean
-  public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-    LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-    entityManagerFactoryBean.setDataSource(dataSource());
-    entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-    entityManagerFactoryBean.setPackagesToScan("net.mikasa.mikasaweb");
-    entityManagerFactoryBean.setJpaProperties(jpaProperties());
-    return entityManagerFactoryBean;
-  }  
-  
-  private Properties jpaProperties() {
-    Properties properties = new Properties();
-    properties.setProperty("hibernate.hbm2ddl.auto","create");
-    properties.setProperty("hibernate.dialect","org.hibernate.dialect.H2Dialect");
-    //properties.setProperty("hibernate.show_sql","true");
-    //properties.setProperty("hibernate.format_sql","true");
-    return properties;
-  }
-  
-  @Bean
-  public JpaTransactionManager transactionManager() {
-    JpaTransactionManager transactionManager = new JpaTransactionManager();
-    transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
-    transactionManager.setDataSource(dataSource());
-    return transactionManager;
-  }
-  
-  /*
-  @Bean
-  public TomcatEmbeddedServletContainerFactory tomcatFactory() {
-    return new TomcatEmbeddedServletContainerFactory() {
+  @Autowired
+  private MongoTemplate mongoTemplate;
 
-      @Override
-      protected TomcatEmbeddedServletContainer getTomcatEmbeddedServletContainer(Tomcat tomcat) {
-        tomcat.enableNaming();
-        return super.getTomcatEmbeddedServletContainer(tomcat);
-      }
-    };
-  } */
+  @Bean
+  public String initDb() throws IOException {
+    
+    log.info("Initializing test database..."); 
+    Resource resource = ctx.getResources("classpath:testdata.js")[0];
+    InputStream is = resource.getInputStream(); 
+    String scriptBody = IOUtils.toString(is, Charsets.UTF_8);
+    
+    log.info("Importing test data...");
+    ScriptOperations scriptOps = mongoTemplate.scriptOps();
+    ExecutableMongoScript script = new ExecutableMongoScript(scriptBody);
+    scriptOps.execute(script, "dataLoader");
+    return "ok";
+  }
+    
 }

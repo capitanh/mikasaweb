@@ -1,12 +1,7 @@
 ---
 - hosts: all
-#  environment:
-#    DEBIAN_FRONTEND: noninteractive
-#    LANGUAGE: en_US.UTF-8
-#    LC_ALL: en_US.UTF-8
   roles:
     - capitanh.openldap-ansible-role
-#    - mongodb
-#
-#  tasks:
-#  - include_tasks: mysql.yml
+    - capitanh.mongodb-ansible-role
+  tasks:
+  - include_tasks: mongodb.yml

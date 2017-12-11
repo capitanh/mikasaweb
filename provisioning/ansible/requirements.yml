@@ -1,1 +1,2 @@
 - src: capitanh.openldap-ansible-role
+- src: capitanh.mongodb-ansible-role

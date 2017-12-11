@@ -1,7 +1,7 @@
 package net.mikasa.mikasaweb.controller;
 
 import net.mikasa.mikasaweb.bean.UserBean;
-import net.mikasa.mikasaweb.model.Region;
+//import net.mikasa.mikasaweb.model.Region;
 import net.mikasa.mikasaweb.service.RegionService;
 
 import java.util.List;
@@ -28,13 +28,13 @@ public class HomeController
 
 	@ModelAttribute("user")
 	public String getUser() {
-	  return userBean.getUser().getUsername();
+	  return userBean.getUsername();
 	}
 	
-	@ModelAttribute("regions")
+	/*@ModelAttribute("regions")
 	public List<Region> getAllRegions(){
 		return regionService.findAll();
-	}
+	}*/
 
 	@RequestMapping("/")
 	public String showHomePage(Model model)

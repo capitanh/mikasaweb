@@ -5,12 +5,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import net.mikasa.mikasaweb.dao.RegionDAO;
-import net.mikasa.mikasaweb.model.Region;
+//import net.mikasa.mikasaweb.dao.RegionDAO;
+//import net.mikasa.mikasaweb.model.Region;
 
 @Service
 public class RegionService {
   
+  /*
   @Autowired
   private RegionDAO regionDAO;
 
@@ -21,6 +22,6 @@ public class RegionService {
   
   public List<Region> findAll(){
     return regionDAO.findAll();
-  }
+  }*/
 
 }

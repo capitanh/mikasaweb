@@ -7,11 +7,6 @@
 mongo_user:           mongodb         # MongoDB username
 mongo_password:       mongodb         # MongoDB password
 mongo_db:             mikasadb        # MongoDB database name
-mongo_collections:
-  - users
-  - plans
-  - activities
-
 
 #################################################
 # Wildfly Settings
@@ -36,7 +31,7 @@ ldap_auth:            # LDAP Authetication config
   bind_pw:              secret
 ldap_users:
   admin:
-    cn: System Administrator
+    cn: Systems Administrator
     givenname: System
     sn: Administrator
     mail: admin@golili.net
