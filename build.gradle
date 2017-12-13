@@ -75,8 +75,10 @@ dependencies {
   compile 'org.webjars:bootstrap:3.3.0'
   compile 'org.springframework.boot:spring-boot-starter-web'
   compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
-    compile 'org.springframework.boot:spring-boot-starter-security'
+  compile 'org.springframework.boot:spring-boot-starter-security'
   compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+  compile 'org.springframework.security:spring-security-ldap'
+  compile 'org.springframework.ldap:spring-ldap-core'
 }
 
 /*
