@@ -1,8 +1,8 @@
 package net.mikasa.mikasaweb.controller;
 
 import net.mikasa.mikasaweb.bean.UserBean;
-//import net.mikasa.mikasaweb.model.Region;
-import net.mikasa.mikasaweb.service.RegionService;
+import net.mikasa.mikasaweb.model.Activity;
+import net.mikasa.mikasaweb.service.ActivityService;
 
 import java.util.List;
 
@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
@@ -21,7 +22,7 @@ public class HomeController
 	private static Logger log = LoggerFactory.getLogger(HomeController.class);
 
 	@Autowired
-	private RegionService regionService;
+	private ActivityService activityService;
 
 	@Autowired
 	private UserBean userBean;
@@ -31,18 +32,18 @@ public class HomeController
 	  return userBean.getUsername();
 	}
 	
-	/*@ModelAttribute("regions")
-	public List<Region> getAllRegions(){
-		return regionService.findAll();
-	}*/
+	@ModelAttribute("activities")
+	public List<Activity> findByOwner(){
+		return activityService.findByOwner("13744917W");
+	}
 
 	@RequestMapping("/")
-	public String showHomePage(Model model)
+	public ModelAndView showHomePage(Model model)
 	{
 		//String appVersion = Manifests.read("Implementation-Version");
 		//model.addAttribute("appVersion",appVersion);
-		log.info("Loading home page");
-		return "index";
+		log.info("User: " + getUser());
+		return new ModelAndView("index");
 	}
 
 }

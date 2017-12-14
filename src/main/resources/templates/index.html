@@ -18,33 +18,39 @@
 			<p class="navbar-text pull-right">
 				<a href="logout">logout</a>
 			</p>
-			<p class="navbar-text pull-right"> logged in as: ${user}</p>
+			<p class="navbar-text pull-right"> logged in as: <label th:text="${user}"/></p>
 		</div>
 	</nav>
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-4"></div>
-			<div class="col-md-4">
-				<div class="well">mikasa.net 4.0 beta. Welcome ${user}</div>
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<div class="well">
+				  mikasa.net 4.0 beta. Welcome <label th:text="${user}"/>
+				</div>
 
 				<table class="table table-striped table-bordered table-hover">
 					<thead>
 				    <tr>
-				      <th th:text="Id"></th>
-				      <th th:text="Name"></th>
+				      <th th:text="Name" width="600"></th>
+				      <th th:text="Date"></th>
+				      <th th:text="Assistants"></th>
+				      <th th:text="Amount"></th>
 				    </tr>
 					</thead>
 				  <tbody>
-				    <tr th:each="sb:${regions}">
-				      <td th:text="${sb.id}"></td>
+				    <tr th:each="sb:${activities}">
 				      <td th:text="${sb.name}"></td>
+				      <td th:text="${sb.date}"></td>
+				      <td th:text="${sb.assistants}"></td>
+				      <td th:text="${sb.amount}"></td>
 				     </tr>
 				  </tbody>
 				</table>
 
 			</div>
-			<div class="col-md-4"></div>
+			<div class="col-md-2"></div>
 		</div>
 	</div>
 

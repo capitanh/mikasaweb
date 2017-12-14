@@ -13,7 +13,6 @@ public class UserBean
 		
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		return userDetails.getUsername();
-
 	}
 	
 }

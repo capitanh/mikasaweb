@@ -36,24 +36,28 @@ ldap_users:
     sn: Administrator
     mail: admin@golili.net
     userpassword: admin
+    employeeNumber: 0
   lnovo:
     cn: Luis Novo
     givenname: Luis
     sn: Novo
     mail: lnovo@golili.net
     userpassword: alibaba
+    employeeNumber: 50837161P
   erodriguez:
     cn: Elena Rodriguez
     givenname: Elena
     sn: Rodriguez
     mail: erodriguez@golili.net
     userpassword: alibaba
+    employeeNumber: 74496335W
   aperez:
     cn: Alberto Perez
     givenname: Alberto
     sn: Perez
     mail: aperez@golili.net
     userpassword: alibaba
+    employeeNumber: 13744917W
 
 ldap_groups:
   - name: administrators
