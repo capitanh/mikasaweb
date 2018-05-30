@@ -5,7 +5,6 @@
 #################################################
 # Mongodb Settings
 mongo_user:           mongodb         # MongoDB username
-mongo_password:       mongodb         # MongoDB password
 mongo_db:             mikasadb        # MongoDB database name
 
 #################################################
@@ -17,54 +16,8 @@ wildfly_basedir:      /opt
 wildfly_home:         /opt/wildfly
 wildfly_version:      11.0.0.Final
 wildfly_admin:        admin         # Management console admin user
-wildfly_password:     admin         # Management console admin password
-
-dev_tools_dir:        /usr/lib
-gradle_version:       4.2
 
 #################################################
-# OpenLDAP Settings
-ldap_basedn:          dc=golili,dc=net
-ldap_auth:            # LDAP Authetication config
-  server_uri:           ldap://localhost:389
-  bind_dn:              cn=admin,{{ldap_basedn}}
-  bind_pw:              secret
-ldap_users:
-  admin:
-    cn: Systems Administrator
-    givenname: System
-    sn: Administrator
-    mail: admin@golili.net
-    userpassword: admin
-    employeeNumber: 0
-  lnovo:
-    cn: Luis Novo
-    givenname: Luis
-    sn: Novo
-    mail: lnovo@golili.net
-    userpassword: alibaba
-    employeeNumber: 50837161P
-  erodriguez:
-    cn: Elena Rodriguez
-    givenname: Elena
-    sn: Rodriguez
-    mail: erodriguez@golili.net
-    userpassword: alibaba
-    employeeNumber: 74496335W
-  aperez:
-    cn: Alberto Perez
-    givenname: Alberto
-    sn: Perez
-    mail: aperez@golili.net
-    userpassword: alibaba
-    employeeNumber: 13744917W
-
-ldap_groups:
-  - name: administrators
-    members:
-      - admin
-  - name: developers
-    members:
-      - lnovo
-      - erodriguez
-      - aperez
+# Gradle Settings
+dev_tools_dir:        /usr/lib
+gradle_version:       4.2
