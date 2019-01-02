@@ -10,7 +10,7 @@ locale_lc_all:  en_US.UTF-8
 locale_lang:    en_US.UTF-8
 roles_path:     ~/.ansible/roles
 ports:
-#- guestPort: 27017  #MongoDB
-#  hostPort: 27017
+- guestPort: 27017  #MongoDB
+  hostPort: 27017
 - guestPort: 389    #OpenLDAP
   hostPort: 10389

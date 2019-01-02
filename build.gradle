@@ -69,8 +69,7 @@ dependencies {
 
   integrationTestCompile 'org.springframework.boot:spring-boot-starter-test'
   integrationTestCompile 'org.seleniumhq.selenium:selenium-server:3.7.1'
-  integrationTestCompile 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
-
+  
   compile 'org.springframework.boot:spring-boot-devtools'
   compile 'org.webjars:bootstrap:3.3.0'
   compile 'org.springframework.boot:spring-boot-starter-web'
@@ -81,7 +80,6 @@ dependencies {
   compile 'org.springframework.ldap:spring-ldap-core'
 
   providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-  providedRuntime 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
 }
 
 /*configurations {
