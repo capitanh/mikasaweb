@@ -25,11 +25,11 @@ Vagrant.configure(2) do |config|
   config.vm.hostname = settings['host_name']
   #Needed to avoid 'Inappropriate ioctl for device' error message
   config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
-  
+
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "provisioning/ansible/playbook.yml"
     ansible.galaxy_role_file = "provisioning/ansible/requirements.yml"
     ansible.galaxy_roles_path = settings['roles_path']
   end
-  
+
 end
