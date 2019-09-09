@@ -3,8 +3,7 @@ provisioning:   ansible  # [puppet|ansible]
 vb_name:        mikasaweb
 vb_memory:      4096
 vb_cpus:        2
-box_name:       bento/ubuntu-16.04
-#box_name:       centos/7
+box_name:       bento/ubuntu-18.04
 host_name:      mikasaweb.golili.net
 locale_lc_all:  en_US.UTF-8
 locale_lang:    en_US.UTF-8
