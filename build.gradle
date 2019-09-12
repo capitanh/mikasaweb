@@ -10,7 +10,7 @@
 
 plugins {
   id 'java'
-  id 'org.unbroken-dome.test-sets' version '1.4.2'
+  id 'org.unbroken-dome.test-sets' version '2.1.1'
   id 'eclipse-wtp'
   id 'org.springframework.boot' version '1.5.8.RELEASE'
   id 'war'
@@ -69,7 +69,7 @@ dependencies {
 
   integrationTestCompile 'org.springframework.boot:spring-boot-starter-test'
   integrationTestCompile 'org.seleniumhq.selenium:selenium-server:3.7.1'
-  
+
   compile 'org.springframework.boot:spring-boot-devtools'
   compile 'org.webjars:bootstrap:3.3.0'
   compile 'org.springframework.boot:spring-boot-starter-web'
