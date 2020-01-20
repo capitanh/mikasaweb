@@ -1,7 +1,5 @@
 ---
 - hosts: all
-  vars_files: 
-    - vault.yml
   roles:
     - capitanh.common_ansible_role
     - capitanh.openldap-ansible-role
