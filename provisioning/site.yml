@@ -2,6 +2,7 @@
 - hosts: all
   roles:
     - capitanh.common_ansible_role
+    - capitanh.zsh_ansible_role
     - capitanh.openldap-ansible-role
     - capitanh.mongodb-ansible-role
   tasks:

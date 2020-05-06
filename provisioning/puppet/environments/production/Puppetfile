@@ -1,2 +1,0 @@
-mod 'camptocamp-openldap', '1.15.0'
-mod 'puppetlabs/mongodb'
