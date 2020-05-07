@@ -4,6 +4,11 @@ ansible_python_interpreter: /usr/bin/python3
 admin_user:           admin             # Administration user for all hosts
 admin_password:       admin             # Admin user password
 
+###############################################################################
+# Oracle JDK
+jdk_basedir:          /usr/lib/java                   # JDK Install dir
+jdk_version:          jdk1.8.0_131
+
 #################################################
 # Mongodb Settings
 mongo_user:           mongodb         # MongoDB username
