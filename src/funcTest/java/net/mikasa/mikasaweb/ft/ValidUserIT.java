@@ -32,7 +32,7 @@ public class ValidUserIT extends FTGenericTest{
     driver = new HtmlUnitDriver(true);
     baseUrl = "http://localhost:" + port;
     driver.get(baseUrl);
-    assertThat(driver.getPageSource().contains("mikasa.net 4.0 beta")==true);
+    assertThat(driver.getPageSource().contains("mikasa.net 5.1.0")==true);
 
   }
 
@@ -44,7 +44,7 @@ public class ValidUserIT extends FTGenericTest{
     driver.findElement(By.id("username")).sendKeys("admin");
     driver.findElement(By.id("password")).sendKeys("admin");
     driver.findElement(By.id("login")).click();
-    assertThat(driver.getPageSource().contains("mikasa.net 4.0 beta. Welcome")==true);
+    assertThat(driver.getPageSource().contains("mikasa.net 5.1.0. Welcome")==true);
   }
 
   //@AfterAll

@@ -3,7 +3,7 @@
   roles:
     - capitanh.common_ansible_role
     - capitanh.zsh_ansible_role
-    - capitanh.oraclejdk-ansible-role
+  #  - capitanh.oraclejdk-ansible-role
     - capitanh.openldap-ansible-role
     - capitanh.mongodb-ansible-role
   tasks:
