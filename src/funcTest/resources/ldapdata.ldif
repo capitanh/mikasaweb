@@ -1,0 +1,78 @@
+version: 1
+
+dn: dc=golili,dc=net
+objectclass: organizationalUnit
+objectclass: top
+description: root node
+
+dn: ou=people,dc=golili,dc=net
+objectclass: organizationalUnit
+objectclass: top
+description: Contains entries which describe persons
+ou: people
+
+dn: ou=groups,dc=golili,dc=net
+objectclass: organizationalUnit
+objectclass: top
+description: Contains entries which describe groups
+ou: groups
+
+################################################################
+#People
+dn: cn=System Administrator,ou=people,dc=golili,dc=net
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: top
+cn: admin
+givenname: System
+sn: Administrator
+uid: admin
+mail: admin@golili.net
+userpassword: admin
+
+dn: cn=Luis Novo,ou=people,dc=golili,dc=net
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: top
+cn: Luis Novo
+givenname: Luis
+sn: Novo
+uid: lnovo
+mail: lnovo@golili.net
+userpassword: alibaba
+
+dn: cn=Elena Rodriguez,ou=people,dc=golili,dc=net
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: top
+cn: Elena Rodriguez
+givenname: Elena
+sn: Rodriguez
+uid: erodriguez
+mail: erodriguez@golili.net
+userpassword: alibaba
+
+dn: cn=Alberto Perez,ou=people,dc=golili,dc=net
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: top
+cn: Alberto Perez
+givenname: Alberto
+sn: Perez
+uid: aperez
+mail: aperez@golili.net
+userpassword: alibaba
+
+################################################################
+#Groups
+dn: cn=developers,ou=groups,dc=golili,dc=net
+objectclass: groupOfUniqueNames
+objectclass: top
+cn: developers
+uniquemember: cn=Luis Novo,ou=people,dc=golili,dc=net
+uniquemember: cn=Elena Rodriguez,ou=people,dc=golili,dc=net
+uniquemember: cn=Alberto Perez,ou=people,dc=golili,dc=net
