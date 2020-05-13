@@ -23,10 +23,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
   @Value("${ldap.password}")
   private String ldapPassword;
   
-  //@Value("${ldap.user.dn.pattern}")
-  //private String ldapUserDnPattern;
-  
-  
   @Autowired
   public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
     
@@ -36,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
       .managerPassword(ldapPassword)
       .and()
       .userSearchBase("ou=people")
-      .userSearchFilter("(uid={0})");    
+      .userSearchFilter("(uid={0})");
   }
 	
 	@Override
