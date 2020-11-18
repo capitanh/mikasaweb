@@ -1,0 +1,72 @@
+#################################################
+# General Settings
+ansible_python_interpreter: /usr/bin/python3
+admin_user:           admin             # Administration user for all hosts
+admin_password:       admin             # Admin user password
+
+###############################################################################
+# Oracle JDK
+jdk_basedir:          /usr/lib/java                   # JDK Install dir
+jdk_version:          jdk1.8.0_131
+
+#################################################
+# Mongodb Settings
+mongo_user:           mongodb         # MongoDB username
+mongo_db:             mikasadb        # MongoDB database name
+
+#################################################
+# Wildfly Settings
+http_port:            8090            # JBoss port for http connections
+https_port:           8443            # JBoss port for https connections
+wildfly_user:         wildfly
+wildfly_basedir:      /opt
+wildfly_home:         /opt/wildfly
+wildfly_version:      11.0.0.Final
+wildfly_admin:        admin         # Management console admin user
+
+#################################################
+# Gradle Settings
+dev_tools_dir:        /usr/lib
+gradle_version:       4.2
+
+###############################################################################
+# LDAP
+ldap_basedn:          dc=golili,dc=net
+ldap_server_uri:      ldap://localhost:389
+ldap_bind_pw:         "{{vault_ldap_password}}"
+ldap_users:
+  admin:
+    cn: System Administrator
+    givenname: System
+    sn: Administrator
+    mail: admin@golili.net
+    userpassword: admin
+  lnovo:
+    cn: Luis Novo
+    givenname: Luis
+    sn: Novo
+    mail: lnovo@golili.net
+    userpassword: alibaba
+  erodrigyez:
+    cn: Elena Rodriguez
+    givenname: Elena
+    sn: Rodriguez
+    mail: erodriguez@golili.net
+    userpassword: alibaba
+  aperez:
+    cn: Alberto Perez
+    givenname: Alberto
+    sn: Perez
+    mail: aperez@golili.net
+    userpassword: alibaba
+
+ldap_groups:
+  - name: administrators
+    members:
+      - admin
+  - name: developers
+    members:
+      - lnovo
+      - erodriguez
+      - aperez
+

@@ -1,0 +1,4 @@
+---
+- hosts: openldap_servers
+  roles:
+    - capitanh.openldap-ansible-role

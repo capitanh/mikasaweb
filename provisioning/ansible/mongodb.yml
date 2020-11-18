@@ -1,0 +1,16 @@
+---
+- hosts: mongodb_servers
+  roles:
+    #- capitanh.common_ansible_role
+    #- capitanh.zsh_ansible_role
+    #- capitanh.oraclejdk-ansible-role
+    #- capitanh.openldap-ansible-role
+    - capitanh.mongodb-ansible-role
+  tasks:
+    - name: Transfer data script
+      copy:
+        src: mongodata.js
+        dest: /tmp
+
+    - name: Load data
+      command: mongo /tmp/mongodata.js
