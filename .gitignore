@@ -13,6 +13,6 @@
 *-project
 *-workspace
 *.retry
-/.terraform
-terraform.tfstate
-terraform.tfstate.backup
+.terraform
+terraform.tfstate*
+

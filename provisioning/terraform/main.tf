@@ -79,6 +79,7 @@ resource "aws_instance" "mikasaweb" {
   count           = 2
   tags = {
     Name = "Spring boot Server ${count.index}"
+    Group = "appservers"
   }
 }
 
@@ -89,6 +90,7 @@ resource "aws_instance" "mongodb" {
   security_groups = ["default", "allow_ssh", "allow_mongodb"]
   tags = {
     Name = "MongoDB Server"
+    Group = "mongodb_servers"
   }
 }
 
@@ -98,6 +100,7 @@ resource "aws_instance" "openldap" {
   key_name        = "frankfurt-capitanh-aws"
   security_groups = ["default", "allow_ssh", "allow_openldap"]
   tags = {
-    Name = "openldap Server"
+    Name = "OpenLDAP Server"
+    Group = "openldap_servers"
   }
 }
