@@ -2,3 +2,4 @@
 - import_playbook: common.yml
 - import_playbook: mongodb.yml
 - import_playbook: openldap.yml
+- import_playbook: appserver.yml

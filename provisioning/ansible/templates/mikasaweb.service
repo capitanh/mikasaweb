@@ -1,0 +1,11 @@
+[Unit]
+Description=mikasaweb
+After=syslog.target
+
+[Service]
+User=mikasaweb
+ExecStart=/usr/lib/java/jdk1.8.0_131/bin/java -jar /opt/mikasaweb/mikasaweb-5.1.0.jar --spring.config.location=/opt/mikasaweb/config/application.properties
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target

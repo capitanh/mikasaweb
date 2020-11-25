@@ -2,3 +2,40 @@
 - hosts: appservers
   roles:
     - capitanh.oraclejdk-ansible-role
+  tasks:
+    - name: Create system user
+      user:
+        name: mikasaweb
+        create_home: no
+        system: yes
+
+    - name: Create app dir
+      file:
+        path: "{{item}}"
+        state: directory
+        owner: mikasaweb
+        group: mikasaweb
+      with_items:
+        - /opt/mikasaweb
+        - /opt/mikasaweb/config
+
+#    - name: Transfer config file
+#      template:
+#        src: application.properties
+#        dest: /opt/mikasaweb/config/
+#        owner: mikasaweb
+#        group: mikasaweb
+
+    - name: Transfer systemd unit
+      template:
+        src: mikasaweb.service
+        dest: /etc/systemd/system/mikasaweb.service
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: Create service
+      service:
+        name: mikasaweb
+        enabled: yes
+        state: started        
