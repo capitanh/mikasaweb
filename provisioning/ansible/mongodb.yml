@@ -1,5 +1,5 @@
 ---
-- hosts: mongodb_servers
+- hosts: all
   roles:
     - capitanh.mongodb-ansible-role
   tasks:
@@ -9,4 +9,4 @@
         dest: /tmp
 
     - name: Load data
-      command: mongo /tmp/mongodata.js
+      command: mongosh /tmp/mongodata.js

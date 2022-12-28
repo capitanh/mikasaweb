@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 Vagrant.configure(2) do |config|
 
-  config.vm.box = 'bento/ubuntu-20.04'
+  config.vm.box = 'capitanh/basebox'
   config.vm.network "forwarded_port", host: 27017,guest: 27017  # MongoDB
   config.vm.network "forwarded_port", host: 10389,guest:   389  # OpenLDAP
 
@@ -19,10 +19,6 @@ Vagrant.configure(2) do |config|
     ansible.playbook = 'site.yml'
     ansible.galaxy_role_file = 'requirements.yml'
     ansible.galaxy_roles_path = '~/.ansible/roles'
-    ansible.groups = {
-      "mongodb_servers" => ["default"],
-      "openldap_servers" => ["default"]
-    }    
   end
 
 end

@@ -1,5 +1,3 @@
-- src: capitanh.common_ansible_role
-- src: capitanh.zsh_ansible_role
 - src: capitanh.oraclejdk-ansible-role
 - src: capitanh.openldap-ansible-role
 - src: capitanh.mongodb-ansible-role
