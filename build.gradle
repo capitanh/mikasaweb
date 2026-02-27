@@ -86,11 +86,11 @@ dependencies {
 
 	//Integration Tests
   intTestImplementation 'org.springframework.boot:spring-boot-starter-test'
-  intTestImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
+  //intTestImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
 
   //Functional Tests
   funcTestImplementation 'org.springframework.boot:spring-boot-starter-test'
-  funcTestImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
+  //funcTestImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
   funcTestImplementation 'org.seleniumhq.selenium:selenium-server:3.7.1'
   funcTestImplementation 'com.unboundid:unboundid-ldapsdk'
 
